@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './Dribbble.scss';
 
 class Dribbble extends Component {
   render() {

@@ -192,12 +192,16 @@ module.exports = {
           },
           {
             test: /\.s[ac]ss$/,
-            include: paths.appSrc,
-            loaders: [
-                require.resolve('style-loader'),
-                require.resolve('css-loader'),
-                require.resolve('sass-loader')
-            ]
+            use: [{
+              loader: 'style-loader'
+            }, {
+              loader: 'css-loader'
+            }, {
+              loader: 'sass-loader',
+              options: {
+                includePaths: [ paths.appSrc, paths.appPublic ]
+              }
+            }]
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
