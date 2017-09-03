@@ -339,7 +339,7 @@ class CategoryDetails extends Component {
                     799.00
                   </span>
                 </del>
-                <ins>
+                <ins style={ { paddingLeft: '5px' } }>
                   <span className="woocommerce-Price-amount amount">
                     <span className="woocommerce-Price-currencySymbol">£</span>
                     699.00

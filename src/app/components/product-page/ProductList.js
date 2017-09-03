@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-class ProductList extends Component {
-  render() {
-    return (
-      <div className="Product-list">
-        This is ProductList component
-      </div>
-    )
-  }
-}
+import ProductDetails from './ProductDetails';
+
+const ProductList = ({ match }) => (
+  // <div className="Product-list">
+    <Switch>
+      <Route exact path={ match.url } render={ props => (
+        <Redirect to={ `${ match.url }/aaaa` } />
+      ) } />
+      <Route path={ `${ match.url }/:productId` } component={ ProductDetails } />
+    </Switch>
+  // </div>
+);
 
 export default ProductList;

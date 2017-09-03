@@ -8,7 +8,6 @@ const Routes = [{
   component: HomePage
 }, {
   path: '/product',
-  exact: true,
   component: ProductPage.ProductList
 }, {
   path: '/product-category',
