@@ -168,7 +168,7 @@ class MainHeader extends Component {
                   <h4 className="panel-title">Shop by category</h4>
                 </a>
               </div>
-              <div id="collapseOne" className="panel-collapse collapse  col-md-3" role="tabpanel" aria-labelledby="headingOne"> 
+              <div id="collapseOne" className="panel-collapse collapse in col-md-3" role="tabpanel" aria-labelledby="headingOne"> 
                 <div id="menu-homepage-side" className="widget-menu">
                   <li id="menu-item-957" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-957 dropdown">
                     <a title="Shoes" href="http://demo.themes4wp.com/kakina/product-category/shoes/" data-toggle="dropdown" className="dropdown-toggle">

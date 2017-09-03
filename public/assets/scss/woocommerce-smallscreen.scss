@@ -1,0 +1,504 @@
+//colors
+$black_2_5: rgba(0,0,0,.025);
+
+//@extend-elements
+//original selectors
+//.woocommerce table.shop_table_responsive tr td::before, .woocommerce-page table.shop_table_responsive tr td::before
+%extend_1 {
+	content: attr(data-title) ": ";
+	font-weight: 700;
+	float: left;
+}
+
+//original selectors
+//.woocommerce ul.products li.product, .woocommerce-page ul.products li.product, .woocommerce-page[class*=columns-] ul.products li.product, .woocommerce[class*=columns-] ul.products li.product
+%extend_2 {
+	width: 48%;
+	float: left;
+	clear: both;
+	margin: 0 0 2.992em;
+}
+
+//original selectors
+//.woocommerce .cart-collaterals .cart_totals, .woocommerce .cart-collaterals .cross-sells, .woocommerce .cart-collaterals .shipping_calculator, .woocommerce-page .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cross-sells, .woocommerce-page .cart-collaterals .shipping_calculator
+%extend_3 {
+	width: 100%;
+	float: none;
+	text-align: left;
+}
+
+//original selectors
+//.woocommerce #payment #place_order, .woocommerce-page #payment #place_order
+%extend_4 {
+	float: none;
+	width: 100%;
+	//Instead of the line below you could use @include box-sizing($bs)
+	box-sizing: border-box;
+	margin-bottom: 1em;
+}
+
+//original selectors
+//.woocommerce .lost_reset_password .form-row-first, .woocommerce .lost_reset_password .form-row-last, .woocommerce-page .lost_reset_password .form-row-first, .woocommerce-page .lost_reset_password .form-row-last
+%extend_5 {
+	width: 100%;
+	float: none;
+	margin-right: 0;
+}
+
+
+.woocommerce {
+	table {
+		&.shop_table_responsive {
+			tbody {
+				th {
+					display: none;
+				}
+				tr:first-child td:first-child {
+					border-top: 0;
+				}
+			}
+			thead {
+				display: none;
+			}
+			tr {
+				display: block;
+				td {
+					display: block;
+					text-align: right!important;
+					&.actions::before {
+						display: none;
+					}
+					&.product-remove::before {
+						display: none;
+					}
+					&.order-actions {
+						text-align: left!important;
+					}
+				}
+				td::before {
+					@extend %extend_1;
+				}
+				&:nth-child(2n) td {
+					background-color: $black_2_5;
+				}
+			}
+		}
+		&.cart {
+			.product-thumbnail {
+				display: none;
+			}
+			td.actions {
+				text-align: left;
+				.coupon {
+					float: none;
+					padding-bottom: .5em;
+					.button {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+						&.alt {
+							float: right;
+						}
+					}
+					.input-text {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+						+ .button {
+							float: right;
+						}
+					}
+					input {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+					}
+				}
+				.coupon::after {
+					content: ' ';
+					display: table;
+					clear: both;
+				}
+				.coupon::before {
+					content: ' ';
+					display: table;
+				}
+				.button {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+		&.my_account_orders tr td {
+			&.order-actions::before {
+				display: none;
+			}
+			&.order-actions {
+				text-align: left;
+				.button {
+					float: none;
+					margin: .125em .25em .125em 0;
+				}
+			}
+		}
+	}
+	#content {
+		table.cart {
+			.product-thumbnail {
+				display: none;
+			}
+			td.actions {
+				text-align: left;
+				.coupon {
+					float: none;
+					padding-bottom: .5em;
+					.button {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+						&.alt {
+							float: right;
+						}
+					}
+					.input-text {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+						+ .button {
+							float: right;
+						}
+					}
+					input {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+					}
+				}
+				.coupon::after {
+					content: ' ';
+					display: table;
+					clear: both;
+				}
+				.coupon::before {
+					content: ' ';
+					display: table;
+				}
+				.button {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+		div.product div {
+			&.images {
+				float: none;
+				width: 100%;
+			}
+			&.summary {
+				float: none;
+				width: 100%;
+			}
+		}
+	}
+	.col2-set {
+		.col-1 {
+			float: none;
+			width: 100%;
+		}
+		.col-2 {
+			float: none;
+			width: 100%;
+		}
+	}
+	.cart-collaterals {
+		.cart_totals {
+			@extend %extend_3;
+		}
+		.cross-sells {
+			@extend %extend_3;
+		}
+		.shipping_calculator {
+			@extend %extend_3;
+		}
+	}
+	#payment {
+		.terms {
+			text-align: left;
+			padding: 0;
+		}
+		#place_order {
+			@extend %extend_4;
+		}
+	}
+	.lost_reset_password {
+		.form-row-first {
+			@extend %extend_5;
+		}
+		.form-row-last {
+			@extend %extend_5;
+		}
+	}
+	ul.products li.product {
+		@extend %extend_2;
+		&:nth-child(2n) {
+			float: right;
+			clear: none!important;
+		}
+	}
+	div.product div {
+		&.images {
+			float: none;
+			width: 100%;
+		}
+		&.summary {
+			float: none;
+			width: 100%;
+		}
+	}
+	&.woocommerce-checkout form.login .form-row {
+		width: 100%;
+		float: none;
+	}
+}
+.woocommerce-page {
+	table {
+		&.shop_table_responsive {
+			tbody {
+				th {
+					display: none;
+				}
+				tr:first-child td:first-child {
+					border-top: 0;
+				}
+			}
+			thead {
+				display: none;
+			}
+			tr {
+				display: block;
+				td {
+					display: block;
+					text-align: right!important;
+					&.actions::before {
+						display: none;
+					}
+					&.product-remove::before {
+						display: none;
+					}
+					&.order-actions {
+						text-align: left!important;
+					}
+				}
+				td::before {
+					@extend %extend_1;
+				}
+				&:nth-child(2n) td {
+					background-color: $black_2_5;
+				}
+			}
+		}
+		&.cart {
+			.product-thumbnail {
+				display: none;
+			}
+			td.actions {
+				text-align: left;
+				.coupon {
+					float: none;
+					padding-bottom: .5em;
+					.button {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+						&.alt {
+							float: right;
+						}
+					}
+					.input-text {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+						+ .button {
+							float: right;
+						}
+					}
+					input {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+					}
+				}
+				.coupon::after {
+					content: ' ';
+					display: table;
+					clear: both;
+				}
+				.coupon::before {
+					content: ' ';
+					display: table;
+				}
+				.button {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+		&.my_account_orders tr td {
+			&.order-actions::before {
+				display: none;
+			}
+			&.order-actions {
+				text-align: left;
+				.button {
+					float: none;
+					margin: .125em .25em .125em 0;
+				}
+			}
+		}
+	}
+	#content {
+		table.cart {
+			.product-thumbnail {
+				display: none;
+			}
+			td.actions {
+				text-align: left;
+				.coupon {
+					float: none;
+					padding-bottom: .5em;
+					.button {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+						&.alt {
+							float: right;
+						}
+					}
+					.input-text {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+						+ .button {
+							float: right;
+						}
+					}
+					input {
+						width: 48%;
+						//Instead of the line below you could use @include box-sizing($bs)
+						box-sizing: border-box;
+					}
+				}
+				.coupon::after {
+					content: ' ';
+					display: table;
+					clear: both;
+				}
+				.coupon::before {
+					content: ' ';
+					display: table;
+				}
+				.button {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+		div.product div {
+			&.images {
+				float: none;
+				width: 100%;
+			}
+			&.summary {
+				float: none;
+				width: 100%;
+			}
+		}
+	}
+	.col2-set {
+		.col-1 {
+			float: none;
+			width: 100%;
+		}
+		.col-2 {
+			float: none;
+			width: 100%;
+		}
+	}
+	.cart-collaterals {
+		.cart_totals {
+			@extend %extend_3;
+		}
+		.cross-sells {
+			@extend %extend_3;
+		}
+		.shipping_calculator {
+			@extend %extend_3;
+		}
+	}
+	#payment {
+		.terms {
+			text-align: left;
+			padding: 0;
+		}
+		#place_order {
+			@extend %extend_4;
+		}
+	}
+	.lost_reset_password {
+		.form-row-first {
+			@extend %extend_5;
+		}
+		.form-row-last {
+			@extend %extend_5;
+		}
+	}
+	ul.products li.product {
+		@extend %extend_2;
+		&:nth-child(2n) {
+			float: right;
+			clear: none!important;
+		}
+	}
+	div.product div {
+		&.images {
+			float: none;
+			width: 100%;
+		}
+		&.summary {
+			float: none;
+			width: 100%;
+		}
+	}
+	&.woocommerce-checkout form.login .form-row {
+		width: 100%;
+		float: none;
+	}
+}
+.woocommerce-account {
+	.woocommerce-MyAccount-content {
+		float: none;
+		width: 100%;
+	}
+	.woocommerce-MyAccount-navigation {
+		float: none;
+		width: 100%;
+	}
+}
+.woocommerce-page[class*=columns-] ul.products li.product {
+	@extend %extend_2;
+	&:nth-child(2n) {
+		float: right;
+		clear: none!important;
+	}
+}
+.woocommerce[class*=columns-] ul.products li.product {
+	@extend %extend_2;
+	&:nth-child(2n) {
+		float: right;
+		clear: none!important;
+	}
+}
+.single-product .twentythirteen .panel {
+	padding-left: 20px!important;
+	padding-right: 20px!important;
+}

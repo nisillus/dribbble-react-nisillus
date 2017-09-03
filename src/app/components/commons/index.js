@@ -1,3 +1,4 @@
 import MainHeader from './MainHeader';
+import MainContent from './MainContent';
 
-export { MainHeader };
+export { MainHeader, MainContent };
