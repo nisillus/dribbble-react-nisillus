@@ -1,6 +1,6 @@
 import * as CategoryActionTypes from './category-action-types';
 import * as middlewares from '../middlewares/index';
-import { CategoryModel } from '../models/index';
+// import { CategoryModel } from '../models/index';
 
 const requestCategoryData = (params) => {
   return {

@@ -1,6 +1,63 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Link, withRouter } from 'react-router-dom'
+
+import * as actions from '../../actions/index';
 
 class CategoryDetails extends Component {
+  constructor(props) {
+    super(props);
+
+    const { dispatch } = this.props;
+    const fetchProductsByCate = bindActionCreators(actions.ProductActions.fetchProductData, dispatch);
+    dispatch(fetchProductsByCate({ cate_code: this.props.match.params.catCode }));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.match.params.catCode !== this.props.match.params.catCode) {
+      const { dispatch } = this.props;
+      const fetchProductsByCate = bindActionCreators(actions.ProductActions.fetchProductData, dispatch);
+      dispatch(fetchProductsByCate({ cate_code: this.props.match.params.catCode }));
+    }
+  }  
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    productReducer: PropTypes.shape({
+      isFetching: PropTypes.bool.isRequired,
+      isSuccessfulFetching: PropTypes.bool.isRequired,
+      products: PropTypes.arrayOf(PropTypes.shape({
+        product_id: PropTypes.number.isRequired,
+        product_code: PropTypes.string.isRequired,
+        name: PropTypes.string,
+        img_url: PropTypes.string,
+        img_set: PropTypes.string,
+        price: PropTypes.number,
+        old_price: PropTypes.number,
+        on_sale: PropTypes.bool
+      })),
+      message: PropTypes.string
+    })
+  };
+
+  addProductToCart = (e, productId) => {
+    console.log(e, productId);
+  }
+
+  quickViewProduct = (e, productId) => {
+    console.log(e, productId);    
+  }
+
+  compareProduct = (e, productId) => {
+    console.log(e, productId);    
+  }
+
+  addProductToWishList = (e, productId) => {
+    console.log(e, productId);    
+  }
+
   render() {
     return (
       <div className="Category-details">
@@ -9,10 +66,10 @@ class CategoryDetails extends Component {
             <div id="breadcrumbs">
               <div className="breadcrumbs-inner text-right">
                 <a href="http://demo.themes4wp.com/kakina">Home</a>
-                 » Jewelry
+                 » { this.props.match.params.catCode }
               </div>
             </div>        
-            <h1 className="page-title">Jewelry</h1>
+            <h1 className="page-title">{ this.props.match.params.catCode }</h1>
             <div className="term-description">
               <p>Shop online at MaxStore for the world’s finest jewellery.</p>
             </div>
@@ -27,231 +84,59 @@ class CategoryDetails extends Component {
                 <option value="price-desc">Sort by price: high to low</option>
               </select>
             </form>
-            <ul className="products">            
-              <li className="post-707 product type-product status-publish has-post-thumbnail product_cat-jewelry first instock sale shipping-taxable purchasable product-type-simple">
-                <a href="http://demo.themes4wp.com/kakina/product/bracelet-basic/" className="woocommerce-LoopProduct-link">
-                  <span className="onsale">Sale!</span>
-                  <img width="300" height="300" src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144646_1280-300x300.jpg" className="attachment-shop_catalog size-shop_catalog wp-post-image" alt="bracelet-144646_1280" title="bracelet-144646_1280" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144646_1280-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144646_1280-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144646_1280-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144646_1280-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144646_1280-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
-                  <h2 className="woocommerce-loop-product__title">Bracelet basic</h2>
-                  <span className="price">
-                    <del>
-                      <span className="woocommerce-Price-amount amount">
-                        <span className="woocommerce-Price-currencySymbol">£</span>
-                        129.00
-                      </span>
-                    </del>
-                    <ins>
-                      <span className="woocommerce-Price-amount amount">
-                        <span className="woocommerce-Price-currencySymbol">£</span>
-                        99.00
-                      </span>
-                    </ins>
-                  </span>
-                </a>
-                <a rel="nofollow" href="/kakina/product-category/jewelry/?add-to-cart=707" data-quantity="1" data-product_id="707" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                <a href="#" className="button yith-wcqv-button" data-product_id="707">Quick View</a>
-                <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=707" className="compare button" data-product_id="707" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
-                <div className="add-to-wishlist-custom add-to-wishlist-707">
-                  <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                    <a href="/kakina/product-category/jewelry/?add_to_wishlist=707" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="707" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
-                    <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
-                  </div>
-                  <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">Added!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">View Wishlist</a>
-                  </div>
-                  <div className="yith-wcwl-wishlistexistsbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">The product is already in the wishlist!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">Browse Wishlist</a>
-                  </div>
-                  <div className="clear"></div>
-                  <div className="yith-wcwl-wishlistaddresponse"></div>
-                </div>
-              </li>
-              <li className="post-708 product type-product status-publish has-post-thumbnail product_cat-jewelry product_tag-gold  instock featured shipping-taxable purchasable product-type-simple">
-                <a href="http://demo.themes4wp.com/kakina/product/bracelet-gold/" className="woocommerce-LoopProduct-link">
-                  <img width="300" height="300" src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144647_1280-300x300.jpg" className="attachment-shop_catalog size-shop_catalog wp-post-image" alt="bracelet-144647_1280" title="bracelet-144647_1280" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144647_1280-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144647_1280-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144647_1280-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144647_1280-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144647_1280-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
-                  <h2 className="woocommerce-loop-product__title">Bracelet gold</h2>
-                  <span className="price">
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">£</span>
-                      199.00
+            <ul className="products">
+              { this.props.productReducer.products && this.props.productReducer.products.map((product, index) => (
+                <li key={ index } className={ `post-${ product.product_id } product type-product status-publish has-post-thumbnail product_cat-jewelry first instock sale shipping-taxable purchasable product-type-simple` }>
+                  <Link to={ `/product/${ product.product_code }` } className="woocommerce-LoopProduct-link">
+                    {
+                      product.on_sale
+                      ? (
+                        <span className="onsale">Sale!</span>
+                      ) : null
+                    }
+                    <img width="300" height="300" src={ product.img_url } className="attachment-shop_catalog size-shop_catalog wp-post-image" alt="bracelet-144646_1280" title="bracelet-144646_1280" srcSet={ product.img_set } sizes="(max-width: 300px) 100vw, 300px" />
+                    <h2 className="woocommerce-loop-product__title">{ product.name }</h2>
+                    <span className="price">
+                      {
+                        product.old_price
+                        ? (
+                            <del>
+                              <span className="woocommerce-Price-amount amount">
+                                <span className="woocommerce-Price-currencySymbol">£</span>
+                                { product.old_price }
+                              </span>
+                            </del>
+                          ) : null
+                        }
+                      <ins>
+                        <span className="woocommerce-Price-amount amount">
+                          <span className="woocommerce-Price-currencySymbol">£</span>
+                          { product.price }
+                        </span>
+                      </ins>
                     </span>
-                  </span>
-                </a>
-                <a rel="nofollow" href="/kakina/product-category/jewelry/?add-to-cart=708" data-quantity="1" data-product_id="708" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                <a href="#" className="button yith-wcqv-button" data-product_id="708">Quick View</a>
-                <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=708" className="compare button" data-product_id="708" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
-                <div className="add-to-wishlist-custom add-to-wishlist-708">
-                  <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                    <a href="/kakina/product-category/jewelry/?add_to_wishlist=708" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="708" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
-                    <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
+                  </Link>
+                  <a rel="nofollow" data-quantity="1" data-product_id={ product.product_id } data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart" onClick={ (e) => this.addProductToCart(e, product.product_id) }>Add to cart</a>
+                  <a className="button yith-wcqv-button" data-product_id={ product.product_id } onClick={ (e) => this.quickViewProduct(e, product.product_id) }>Quick View</a>
+                  <a className="compare button" data-product_id={ product.product_id } rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product" onClick={ (e) => this.compareProduct(e, product.product_id) }>Compare</a>  
+                  <div className={ `add-to-wishlist-custom add-to-wishlist-${ product.product_id }` }>
+                    <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
+                      <a data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id={ product.product_id } data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist" onClick={ (e) => this.addProductToWishList(e, product.product_id) }></a>
+                      <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
+                    </div>
+                    <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
+                      <span className="feedback">Added!</span>
+                      <Link to="/wishlist">View Wishlist</Link>
+                    </div>
+                    <div className="yith-wcwl-wishlistexistsbrowse hide" style={ { display: 'none' } }>
+                      <span className="feedback">The product is already in the wishlist!</span>
+                      <Link to="/wishlist">Browse Wishlist</Link>
+                    </div>
+                    <div className="clear"></div>
+                    <div className="yith-wcwl-wishlistaddresponse"></div>
                   </div>
-                  <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">Added!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">View Wishlist</a>
-                  </div>
-                  <div className="yith-wcwl-wishlistexistsbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">The product is already in the wishlist!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">Browse Wishlist</a>
-                  </div>
-                  <div className="clear"></div>
-                  <div className="yith-wcwl-wishlistaddresponse"></div>
-                </div>
-              </li>
-              <li className="post-706 product type-product status-publish has-post-thumbnail product_cat-jewelry product_tag-gold product_tag-red  instock shipping-taxable purchasable product-type-simple">
-                <a href="http://demo.themes4wp.com/kakina/product/bracelet-red-gold/" className="woocommerce-LoopProduct-link">
-                  <img width="300" height="300" src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140578_1280-300x300.jpg" className="attachment-shop_catalog size-shop_catalog wp-post-image" alt="watch-140578_1280" title="watch-140578_1280" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140578_1280-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140578_1280-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140578_1280-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140578_1280-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140578_1280-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
-                  <h2 className="woocommerce-loop-product__title">Bracelet red-gold</h2>
-                  <span className="price">
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">£</span>
-                      199.00
-                    </span>
-                  </span>
-                </a>
-                <a rel="nofollow" href="/kakina/product-category/jewelry/?add-to-cart=706" data-quantity="1" data-product_id="706" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                <a href="#" className="button yith-wcqv-button" data-product_id="706">Quick View</a>
-                <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=706" className="compare button" data-product_id="706" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
-                <div className="add-to-wishlist-custom add-to-wishlist-706">
-                  <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                    <a href="/kakina/product-category/jewelry/?add_to_wishlist=706" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="706" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
-                    <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
-                  </div>
-                  <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">Added!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">View Wishlist</a>
-                  </div>
-                  <div className="yith-wcwl-wishlistexistsbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">The product is already in the wishlist!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">Browse Wishlist</a>
-                  </div>
-                  <div className="clear"></div>
-                  <div className="yith-wcwl-wishlistaddresponse"></div>
-                </div>
-              </li>
-              <li className="post-700 product type-product status-publish has-post-thumbnail product_cat-jewelry product_cat-watches product_tag-gold product_tag-woman last instock shipping-taxable purchasable product-type-simple">
-                <a href="http://demo.themes4wp.com/kakina/product/gold-watches/" className="woocommerce-LoopProduct-link">
-                  <img width="300" height="300" src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140487_1280-300x300.jpg" className="attachment-shop_catalog size-shop_catalog wp-post-image" alt="watch-140487_1280" title="watch-140487_1280" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140487_1280-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140487_1280-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140487_1280-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140487_1280-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-140487_1280-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
-                  <h2 className="woocommerce-loop-product__title">Gold Watches</h2>
-                  <span className="price">
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">£</span>
-                      399.00
-                    </span>
-                  </span>
-                </a>
-                <a rel="nofollow" href="/kakina/product-category/jewelry/?add-to-cart=700" data-quantity="1" data-product_id="700" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                <a href="#" className="button yith-wcqv-button" data-product_id="700">Quick View</a>
-                <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=700" className="compare button" data-product_id="700" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>
-                <div className="add-to-wishlist-custom add-to-wishlist-700">
-                  <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                    <a href="/kakina/product-category/jewelry/?add_to_wishlist=700" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="700" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
-                    <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
-                  </div>
-                  <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">Added!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">View Wishlist</a>
-                  </div>
-                  <div className="yith-wcwl-wishlistexistsbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">The product is already in the wishlist!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">Browse Wishlist</a>
-                  </div>
-                  <div className="clear"></div>
-                  <div className="yith-wcwl-wishlistaddresponse"></div>
-                </div>
-              </li>
-              <li className="post-709 product type-product status-publish has-post-thumbnail product_cat-jewelry product_cat-watches product_tag-gold product_tag-woman first instock shipping-taxable purchasable product-type-simple">
-                <a href="http://demo.themes4wp.com/kakina/product/gold-watches-woman/" className="woocommerce-LoopProduct-link">
-                  <img width="300" height="300" src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-123748_1280-300x300.jpg" className="attachment-shop_catalog size-shop_catalog wp-post-image" alt="watch-123748_1280" title="watch-123748_1280" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-123748_1280-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-123748_1280-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-123748_1280-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-123748_1280-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-123748_1280-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
-                  <h2 className="woocommerce-loop-product__title">Gold Watches – Woman</h2>
-                  <span className="price">
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">£</span>
-                      499.00
-                    </span>
-                  </span>
-                </a>
-                <a rel="nofollow" href="/kakina/product-category/jewelry/?add-to-cart=709" data-quantity="1" data-product_id="709" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                <a href="#" className="button yith-wcqv-button" data-product_id="709">Quick View</a>
-                <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=709" className="compare button" data-product_id="709" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
-                <div className="add-to-wishlist-custom add-to-wishlist-709">
-                  <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                    <a href="/kakina/product-category/jewelry/?add_to_wishlist=709" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="709" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
-                    <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
-                  </div>
-                  <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">Added!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">View Wishlist</a>
-                  </div>
-                  <div className="yith-wcwl-wishlistexistsbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">The product is already in the wishlist!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">Browse Wishlist</a>
-                  </div>
-                  <div className="clear"></div>
-                  <div className="yith-wcwl-wishlistaddresponse"></div>
-                </div>
-              </li>
-              <li className="post-723 product type-product status-publish has-post-thumbnail product_cat-jewelry  instock shipping-taxable purchasable product-type-simple">
-                <a href="http://demo.themes4wp.com/kakina/product/multi-offer/" className="woocommerce-LoopProduct-link">
-                  <img width="300" height="300" src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/stainless-878348_1280-300x300.jpg" className="attachment-shop_catalog size-shop_catalog wp-post-image" alt="stainless-878348_1280" title="stainless-878348_1280" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/stainless-878348_1280-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/stainless-878348_1280-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/stainless-878348_1280-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/stainless-878348_1280-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/stainless-878348_1280-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
-                  <h2 className="woocommerce-loop-product__title">Multi offer</h2>
-                  <span className="price">
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">£</span>
-                      69.00
-                    </span>
-                  </span>
-                </a>
-                <a rel="nofollow" href="/kakina/product-category/jewelry/?add-to-cart=723" data-quantity="1" data-product_id="723" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                <a href="#" className="button yith-wcqv-button" data-product_id="723">Quick View</a>
-                <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=723" className="compare button" data-product_id="723" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
-                <div className="add-to-wishlist-custom add-to-wishlist-723">
-                  <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                    <a href="/kakina/product-category/jewelry/?add_to_wishlist=723" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="723" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
-                    <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
-                  </div>
-                  <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">Added!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">View Wishlist</a>
-                  </div>
-                  <div className="yith-wcwl-wishlistexistsbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">The product is already in the wishlist!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">Browse Wishlist</a>
-                  </div>
-                  <div className="clear"></div>
-                  <div className="yith-wcwl-wishlistaddresponse"></div>
-                </div>
-              </li>
-              <li className="post-720 product type-product status-publish has-post-thumbnail product_cat-jewelry product_cat-watches  instock shipping-taxable purchasable product-type-simple">
-                <a href="http://demo.themes4wp.com/kakina/product/watches-custom/" className="woocommerce-LoopProduct-link">
-                  <img width="300" height="300" src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-790081_1280-300x300.jpg" className="attachment-shop_catalog size-shop_catalog wp-post-image" alt="watch-790081_1280" title="watch-790081_1280" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-790081_1280-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-790081_1280-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-790081_1280-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-790081_1280-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/watch-790081_1280-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
-                  <h2 className="woocommerce-loop-product__title">Watches Custom</h2>
-                  <span className="price">
-                    <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">£</span>
-                      369.00
-                    </span>
-                  </span>
-                </a>
-                <a rel="nofollow" href="/kakina/product-category/jewelry/?add-to-cart=720" data-quantity="1" data-product_id="720" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a><a href="#" className="button yith-wcqv-button" data-product_id="720">Quick View</a><a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=720" className="compare button" data-product_id="720" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
-                <div className="add-to-wishlist-custom add-to-wishlist-720">
-                  <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                    <a href="/kakina/product-category/jewelry/?add_to_wishlist=720" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="720" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
-                    <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
-                  </div>
-                  <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">Added!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">View Wishlist</a>
-                  </div>
-                  <div className="yith-wcwl-wishlistexistsbrowse hide" style={ { display: 'none' } }>
-                    <span className="feedback">The product is already in the wishlist!</span>
-                    <a href="http://demo.themes4wp.com/kakina/wishlist/">Browse Wishlist</a>
-                  </div>
-                  <div className="clear"></div>
-                  <div className="yith-wcwl-wishlistaddresponse"></div>
-                </div>
-              </li>
+                </li>
+              )) }
             </ul>
           </div>
         </div>
@@ -362,4 +247,18 @@ class CategoryDetails extends Component {
   }
 }
 
-export default CategoryDetails;
+const mapStateToProps = (state) => {
+  let { ProductReducers } = state;
+  const { isFetching, isSuccessfulFetching, data, message } = ProductReducers;
+
+  return {
+    productReducer: {
+      isFetching,
+      isSuccessfulFetching,
+      products: data,
+      message 
+    }
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(CategoryDetails));

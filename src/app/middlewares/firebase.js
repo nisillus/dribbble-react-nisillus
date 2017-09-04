@@ -17,5 +17,7 @@ const initFirebase = () => {
 };
 
 const fetchCategories = () => database.ref('/categories').once('value');
+const fetchProductTags = (tag_id) => database.ref(`/product_tags/${ tag_id }`).once('value');
+const fetchProductsByCate = (cate_code) => database.ref(`/products/${ cate_code }`).once('value');
 
-export { initFirebase, fetchCategories };
+export { initFirebase, fetchCategories, fetchProductTags, fetchProductsByCate };

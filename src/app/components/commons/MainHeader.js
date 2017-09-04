@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import { NavLink as Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class MainHeader extends Component {
   static propTypes = {
@@ -8,7 +8,7 @@ class MainHeader extends Component {
       cate_id: PropTypes.number.isRequired,
       cate_code: PropTypes.string.isRequired,
       name: PropTypes.string,
-      tags: PropTypes.arrayOf(PropTypes.string)
+      tags: PropTypes.arrayOf(PropTypes.number)
     }))
   };
 
@@ -184,25 +184,16 @@ class MainHeader extends Component {
                   {
                     this.props.categories && this.props.categories.map((category, index) => (
                       <li id={ `menu-item-${ category.cate_id }` } key={ index } className={ `menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-${ category.cate_id } dropdown` }>
-                        {/* <a title={ category.name } href="http://demo.themes4wp.com/kakina/product-category/shoes/" data-toggle="dropdown" className="dropdown-toggle">
-                          { category.name }
-                          {
-                            category.tags && category.tags.length > 0
-                            ? (
-                              <span className="caret"></span>
-                            ) : null
-                          }
-                        </a> */}
                         <Link title={ category.name } to={ `/product-category/${ category.cate_code }` }>
                           { category.name }
-                          {
+                          {/* {
                             category.tags && category.tags.length > 0
                             ? (
                               <span className="caret"></span>
                             ) : null
-                          }
+                          } */}
                         </Link>
-                        {
+                        {/* {
                           category.tags && category.tags.length > 0
                           ? (
                             <ul role="menu" className=" dropdown-menu">
@@ -215,77 +206,10 @@ class MainHeader extends Component {
                               }
                             </ul>
                           ) : null
-                        }
+                        } */}
                       </li>
                     ))
                   }
-                  {/* <li id="menu-item-957" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-957 dropdown">
-                    <a title="Shoes" href="http://demo.themes4wp.com/kakina/product-category/shoes/" data-toggle="dropdown" className="dropdown-toggle">
-                      Shoes 
-                      <span className="caret"></span>
-                    </a>
-                    <ul role="menu" className=" dropdown-menu">
-                      <li id="menu-item-964" className="menu-item menu-item-type-taxonomy menu-item-object-product_tag menu-item-964">
-                        <a title="Man" href="http://demo.themes4wp.com/kakina/product-tag/man/">Man</a>
-                      </li>
-                      <li id="menu-item-965" className="menu-item menu-item-type-taxonomy menu-item-object-product_tag menu-item-965">
-                        <a title="Woman" href="http://demo.themes4wp.com/kakina/product-tag/woman/">Woman</a>
-                      </li>
-                      <li id="menu-item-966" className="menu-item menu-item-type-taxonomy menu-item-object-product_tag menu-item-966">
-                        <a title="Kids" href="http://demo.themes4wp.com/kakina/product-tag/kids/">Kids</a>
-                      </li>
-                    </ul>
-                  </li> */}
-                  {/* <li id="menu-item-958" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-958">
-                    <a title="Jewelry" href="http://demo.themes4wp.com/kakina/product-category/jewelry/">Jewelry</a>
-                  </li>
-                  <li id="menu-item-959" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-959">
-                    <a title="Watches" href="http://demo.themes4wp.com/kakina/product-category/watches/">Watches</a>
-                  </li>
-                  <li id="menu-item-960" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-960">
-                    <a title="Technology" href="http://demo.themes4wp.com/kakina/product-category/technology/">Technology</a>
-                  </li>
-                  <li id="menu-item-961" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-961">
-                    <a title="Photo" href="http://demo.themes4wp.com/kakina/product-category/technology/photo/">Photo</a>
-                  </li>
-                  <li id="menu-item-962" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-962 dropdown">
-                    <a title="Mobile" href="http://demo.themes4wp.com/kakina/product-category/technology/mobile/" data-toggle="dropdown" className="dropdown-toggle">
-                      Mobile 
-                      <span className="caret"></span>
-                    </a>
-                    <ul role="menu" className=" dropdown-menu">
-                      <li id="menu-item-971" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-971">
-                        <a title="Smart" href="#">Smart</a>
-                      </li>
-                      <li id="menu-item-972" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-972">
-                        <a title="Future" href="#">Future</a>
-                      </li>
-                      <li id="menu-item-973" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-973">
-                        <a title="Bazar" href="#">Bazar</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li id="menu-item-963" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-963">
-                    <a title="Sunglasses" href="http://demo.themes4wp.com/kakina/product-category/sunglasses/">Sunglasses</a>
-                  </li>
-                  <li id="menu-item-967" className="menu-item menu-item-type-taxonomy menu-item-object-product_tag menu-item-967">
-                    <a title="Sport" href="http://demo.themes4wp.com/kakina/product-tag/sport/">Sport</a>
-                  </li>
-                  <li id="menu-item-968" className="menu-item menu-item-type-taxonomy menu-item-object-product_tag menu-item-968">
-                    <a title="Phone" href="http://demo.themes4wp.com/kakina/product-tag/phone/">Phone</a>
-                  </li>
-                  <li id="menu-item-969" className="menu-item menu-item-type-taxonomy menu-item-object-product_tag menu-item-969">
-                    <a title="Mountain" href="http://demo.themes4wp.com/kakina/product-tag/mountain/">Mountain</a>
-                  </li>
-                  <li id="menu-item-970" className="menu-item menu-item-type-taxonomy menu-item-object-product_tag menu-item-970">
-                    <a title="Casual" href="http://demo.themes4wp.com/kakina/product-tag/casual/">Casual</a>
-                  </li>
-                  <li id="menu-item-987" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-987">
-                    <a title="Accessories" href="#">Accessories</a>
-                  </li>
-                  <li id="menu-item-988" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-988">
-                    <a title="Others" href="#">Others</a>
-                  </li> */}
                 </div>
               </div>
             </div>
@@ -312,39 +236,39 @@ class MainHeader extends Component {
             <div className="social-links">
               <ul>
                 <li>
-                  <a href="#" target="_blank">
+                  <Link to="/#" target="_blank">
                     <i className="fa fa-facebook"></i>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" target="_blank">
+                  <Link to="/#" target="_blank">
                     <i className="fa fa-twitter"></i>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" target="_blank">
+                  <Link to="/#" target="_blank">
                     <i className="fa fa-google-plus"></i>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" target="_blank">
+                  <Link to="/#" target="_blank">
                     <i className="fa fa-instagram"></i>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" target="_blank">
+                  <Link to="/#" target="_blank">
                     <i className="fa fa-pinterest"></i>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" target="_blank">
+                  <Link to="/#" target="_blank">
                     <i className="fa fa-youtube"></i>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" target="_blank">
+                  <Link to="/#" target="_blank">
                     <i className="fa fa-reddit"></i>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>   

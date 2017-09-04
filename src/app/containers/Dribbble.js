@@ -21,21 +21,23 @@ class Dribbble extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    isSuccessfulFetching: PropTypes.bool.isRequired,
-    categories: PropTypes.arrayOf(PropTypes.shape({
-      cate_id: PropTypes.number.isRequired,
-      cate_code: PropTypes.string.isRequired,
-      name: PropTypes.string,
-      tags: PropTypes.arrayOf(PropTypes.string)
-    })),
-    message: PropTypes.string
+    categoriesReducer: PropTypes.shape({
+      isFetching: PropTypes.bool.isRequired,
+      isSuccessfulFetching: PropTypes.bool.isRequired,
+      categories: PropTypes.arrayOf(PropTypes.shape({
+        cate_id: PropTypes.number.isRequired,
+        cate_code: PropTypes.string.isRequired,
+        name: PropTypes.string,
+        tags: PropTypes.arrayOf(PropTypes.number)
+      })),
+      message: PropTypes.string
+    })
   };
 
   render() {
     return (
       <div className="Dribbble container rsrc-container">
-        <MainHeader categories={ this.props.categories } />
+        <MainHeader categories={ this.props.categoriesReducer.categories } />
         <MainContent pageContent={ this.props.children } />
       </div>
     );
@@ -47,10 +49,12 @@ const mapStateToProps = (state) => {
   const { isFetching, isSuccessfulFetching, data, message } = CategoryReducers;
 
   return {
-    isFetching,
-    isSuccessfulFetching,
-    categories: data,
-    message
+    categoriesReducer: {
+      isFetching,
+      isSuccessfulFetching,
+      categories: data,
+      message 
+    }
   };
 }
 
