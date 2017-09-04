@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
+import { NavLink as Link } from 'react-router-dom';
 
 class MainHeader extends Component {
+  static propTypes = {
+    categories: PropTypes.arrayOf(PropTypes.shape({
+      cate_id: PropTypes.number.isRequired,
+      cate_code: PropTypes.string.isRequired,
+      name: PropTypes.string,
+      tags: PropTypes.arrayOf(PropTypes.string)
+    }))
+  };
+
   render() {
     return (
       <div className="Dribbble-header">
@@ -18,9 +29,9 @@ class MainHeader extends Component {
         <div className="header-section row">
           <header id="site-header" className="col-sm-6 col-md-3 hidden-xs rsrc-header text-center" role="banner"> 
             <div className="rsrc-header-img">
-              <a href="http://demo.themes4wp.com/kakina/">
+              <Link to="/">
                 <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/logo.png" title="Kakina" alt="Kakina Logo" />
-              </a>
+              </Link>
             </div>
           </header>
           <div className="hidden-xs">
@@ -170,7 +181,45 @@ class MainHeader extends Component {
               </div>
               <div id="collapseOne" className="panel-collapse collapse col-md-3" role="tabpanel" aria-labelledby="headingOne"> 
                 <div id="menu-homepage-side" className="widget-menu">
-                  <li id="menu-item-957" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-957 dropdown">
+                  {
+                    this.props.categories && this.props.categories.map((category, index) => (
+                      <li id={ `menu-item-${ category.cate_id }` } key={ index } className={ `menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-${ category.cate_id } dropdown` }>
+                        {/* <a title={ category.name } href="http://demo.themes4wp.com/kakina/product-category/shoes/" data-toggle="dropdown" className="dropdown-toggle">
+                          { category.name }
+                          {
+                            category.tags && category.tags.length > 0
+                            ? (
+                              <span className="caret"></span>
+                            ) : null
+                          }
+                        </a> */}
+                        <Link title={ category.name } to={ `/product-category/${ category.cate_code }` }>
+                          { category.name }
+                          {
+                            category.tags && category.tags.length > 0
+                            ? (
+                              <span className="caret"></span>
+                            ) : null
+                          }
+                        </Link>
+                        {
+                          category.tags && category.tags.length > 0
+                          ? (
+                            <ul role="menu" className=" dropdown-menu">
+                              {
+                                category.tags.map((tag, i) => (
+                                  <li id={ `menu-item-${ tag }` } key={ i } className={ `menu-item menu-item-type-taxonomy menu-item-object-product_tag menu-item-${ tag }` }>
+                                    <a title={ tag } >{ tag }</a>
+                                  </li>
+                                ))
+                              }
+                            </ul>
+                          ) : null
+                        }
+                      </li>
+                    ))
+                  }
+                  {/* <li id="menu-item-957" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-957 dropdown">
                     <a title="Shoes" href="http://demo.themes4wp.com/kakina/product-category/shoes/" data-toggle="dropdown" className="dropdown-toggle">
                       Shoes 
                       <span className="caret"></span>
@@ -186,8 +235,8 @@ class MainHeader extends Component {
                         <a title="Kids" href="http://demo.themes4wp.com/kakina/product-tag/kids/">Kids</a>
                       </li>
                     </ul>
-                  </li>
-                  <li id="menu-item-958" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-958">
+                  </li> */}
+                  {/* <li id="menu-item-958" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-958">
                     <a title="Jewelry" href="http://demo.themes4wp.com/kakina/product-category/jewelry/">Jewelry</a>
                   </li>
                   <li id="menu-item-959" className="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-959">
@@ -236,7 +285,7 @@ class MainHeader extends Component {
                   </li>
                   <li id="menu-item-988" className="menu-item menu-item-type-custom menu-item-object-custom menu-item-988">
                     <a title="Others" href="#">Others</a>
-                  </li>
+                  </li> */}
                 </div>
               </div>
             </div>
