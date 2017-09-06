@@ -7,21 +7,21 @@ import { Link, withRouter } from 'react-router-dom'
 import * as actions from '../../actions/index';
 
 class CategoryDetails extends Component {
-  constructor(props) {
-    super(props);
-
-    const { dispatch } = this.props;
-    const fetchProductsByCate = bindActionCreators(actions.ProductActions.fetchProductData, dispatch);
-    dispatch(fetchProductsByCate({ cate_code: this.props.match.params.catCode }));
+  componentDidMount() {
+    this.dispatchUdateProductList(this.props.match.params.cateCode);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.match.params.catCode !== this.props.match.params.catCode) {
-      const { dispatch } = this.props;
-      const fetchProductsByCate = bindActionCreators(actions.ProductActions.fetchProductData, dispatch);
-      dispatch(fetchProductsByCate({ cate_code: this.props.match.params.catCode }));
+    if (prevProps.match.params.cateCode !== this.props.match.params.cateCode) {
+      this.dispatchUdateProductList(this.props.match.params.cateCode);
     }
-  }  
+  }
+
+  dispatchUdateProductList = (cateCode) => {
+    const { dispatch } = this.props;
+    const fetchProductsByCate = bindActionCreators(actions.ProductActions.fetchProductData, dispatch);
+    dispatch(fetchProductsByCate({ cate_code: cateCode }));
+  }
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -35,8 +35,7 @@ class CategoryDetails extends Component {
         img_url: PropTypes.string,
         img_set: PropTypes.string,
         price: PropTypes.number,
-        old_price: PropTypes.number,
-        on_sale: PropTypes.bool
+        old_price: PropTypes.number
       })),
       message: PropTypes.string
     })
@@ -89,7 +88,7 @@ class CategoryDetails extends Component {
                 <li key={ index } className={ `post-${ product.product_id } product type-product status-publish has-post-thumbnail product_cat-jewelry first instock sale shipping-taxable purchasable product-type-simple` }>
                   <Link to={ `/product/${ product.product_code }` } className="woocommerce-LoopProduct-link">
                     {
-                      product.on_sale
+                      product.old_price && product.old_price > product.price
                       ? (
                         <span className="onsale">Sale!</span>
                       ) : null
@@ -121,7 +120,7 @@ class CategoryDetails extends Component {
                   <a className="compare button" data-product_id={ product.product_id } rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product" onClick={ (e) => this.compareProduct(e, product.product_id) }>Compare</a>  
                   <div className={ `add-to-wishlist-custom add-to-wishlist-${ product.product_id }` }>
                     <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                      <a data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id={ product.product_id } data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist" onClick={ (e) => this.addProductToWishList(e, product.product_id) }></a>
+                      <a data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id={ product.product_id } data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist" onClick={ (e) => this.addProductToWishList(e, product.product_id) }> </a>
                       <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
                     </div>
                     <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
@@ -140,7 +139,7 @@ class CategoryDetails extends Component {
             </ul>
           </div>
         </div>
-        <aside id="sidebar" className="col-md-3 rsrc-right" role="complementary">
+        <aside id="sidebar" className="col-md-3 rsrc-right">
           <aside id="woocommerce_price_filter-2" className="widget woocommerce widget_price_filter">
             <h3 className="widget-title">Filter by price</h3>
             <form method="get" action="http://demo.themes4wp.com/kakina/product-category/jewelry/">

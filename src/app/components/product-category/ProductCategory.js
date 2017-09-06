@@ -7,9 +7,9 @@ const ProductCategory = ({ match }) => (
   // <div className="Product-category">
     <Switch>
       <Route exact path={ match.url } render={ props => (
-        <Redirect to={ `${match.url}/aaa` } />
+        <Redirect to={ `${match.url}/shoes` } />
       ) } />
-      <Route path={`${match.url}/:catCode`} component={ CategoryDetails }/>
+      <Route path={`${match.url}/:cateCode`} component={ CategoryDetails }/>
     </Switch>
   // </div>
 );

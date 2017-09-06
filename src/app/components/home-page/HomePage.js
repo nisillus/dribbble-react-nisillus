@@ -7,7 +7,7 @@ class HomePage extends Component {
         <div className="top-area row">
           <div id="slider" className="flexslider homepage-slider col-md-push-3"></div>
         </div>
-        <aside id="sidebar-secondary" className="col-md-3 rsrc-left" role="complementary"></aside>
+        <aside id="sidebar-secondary" className="col-md-3 rsrc-left"></aside>
         <div className="col-md-9 rsrc-main">
           <div className="rsrc-post-content post-978 page type-page status-publish hentry">
             <div className="entry-content">                           

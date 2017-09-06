@@ -3,7 +3,7 @@ import * as middlewares from '../middlewares/index';
 
 const requestProductData = (params) => {
   return {
-    type: ProductActionTypes.FETCH_PRODUCT_DATA,
+    type: ProductActionTypes.FETCH_PRODUCT_LIST_DATA,
     isFetching: true,
     isSuccessfulFetching: false,
     params
@@ -12,7 +12,7 @@ const requestProductData = (params) => {
 
 const receiveProductData = (data) => {
   return {
-    type: ProductActionTypes.RECEIVE_PRODUCT_DATA,
+    type: ProductActionTypes.RECEIVE_PRODUCT_LIST_DATA,
     isFetching: false,
     isSuccessfulFetching: true,
     data
@@ -21,7 +21,7 @@ const receiveProductData = (data) => {
 
 const fetchProductError = (message) => {
   return {
-    type: ProductActionTypes.FETCH_PRODUCT_FAILED,
+    type: ProductActionTypes.FETCH_PRODUCT_LIST_FAILURE,
     isFetching: false,
     isSuccessfulFetching: false,
     message

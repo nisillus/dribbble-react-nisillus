@@ -9,7 +9,7 @@ const ProductList = ({ match }) => (
       <Route exact path={ match.url } render={ props => (
         <Redirect to={ `${ match.url }/aaaa` } />
       ) } />
-      <Route path={ `${ match.url }/:productId` } component={ ProductDetails } />
+      <Route path={ `${ match.url }/:productCode` } component={ ProductDetails } />
     </Switch>
   // </div>
 );

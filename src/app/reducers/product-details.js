@@ -1,26 +1,26 @@
-import { ProductActionTypes } from '../actions/index';
+import { ProductDetailsActionTypes } from '../actions/index';
 
 let initialState = {
   isFetching: false,
   isSuccessfulFetching: false
 };
 
-const ProductReducers = (state = initialState, action) => {
+const ProductDetailsReducers = (state = initialState, action) => {
   switch(action.type) {
-    case ProductActionTypes.FETCH_PRODUCT_LIST_DATA:
+    case ProductDetailsActionTypes.FETCH_PRODUCT_DETAIL_DATA:
       return {
         ...state,
         isFetching: true,
         isSuccessfulFetching: false
       };
-    case ProductActionTypes.RECEIVE_PRODUCT_LIST_DATA:
+    case ProductDetailsActionTypes.RECEIVE_PRODUCT_DETAIL_DATA:
       return {
         ...state,
         isFetching: false,
         isSuccessfulFetching: true,
-        data: action.data || []
+        data: action.data
       };
-    case ProductActionTypes.FETCH_PRODUCT_LIST_FAILURE:
+    case ProductDetailsActionTypes.FETCH_PRODUCT_DETAIL_FAILURE:
       return {
         ...state,
         isFetching: false,
@@ -34,4 +34,4 @@ const ProductReducers = (state = initialState, action) => {
   }
 };
 
-export default ProductReducers;
+export default ProductDetailsReducers;
