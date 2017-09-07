@@ -4,9 +4,11 @@ body {
   font-family: sans-serif;
 }
 
+@import '~antd/dist/antd.css';
 @import 'assets/scss/woocommerce-layout';
 @media only screen and (max-width: 767px) {
   @import 'assets/scss/woocommerce-smallscreen';
 };
 @import 'assets/scss/woocommerce';
 @import 'assets/scss/Dribbble';
+@import 'assets/scss/carousel';

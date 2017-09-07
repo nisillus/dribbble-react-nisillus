@@ -1,13 +1,153 @@
 import React, { Component } from 'react';
+import { Carousel } from 'antd';
 
 class HomePage extends Component {
   render() {
     return (
       <div className="Home-page">
         <div className="top-area row">
-          <div id="slider" className="flexslider homepage-slider col-md-push-3"></div>
+          <Carousel autoplay>
+            <a href="">
+              <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider1.jpg" />
+            </a>
+            <a href="">
+              <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider2.jpg" />
+            </a>
+          </Carousel>
+          {/* <div id="slider" className="flexslider homepage-slider col-md-push-3">
+            <div className="flex-viewport">
+              <ul className="slides">
+                <li className="homepage-slider col-md-9"> 
+                  <a href="">
+                    <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider1.jpg" />
+                  </a>                               
+                </li> 
+                <li className="homepage-slider col-md-9"> 
+                  <a href="">
+                    <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider2.jpg" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <ul className="flex-direction-nav">
+              <li className="flex-nav-prev">
+                <a className="flex-prev" href="#" tabIndex="-1">Previous</a>
+              </li>
+              <li className="flex-nav-next">
+                <a className="flex-next flex-disabled" href="#" tabIndex="-1">Next</a>
+              </li>
+            </ul>
+          </div> */}
         </div>
-        <aside id="sidebar-secondary" className="col-md-3 rsrc-left"></aside>
+        <aside id="sidebar-secondary" className="col-md-3 rsrc-left">
+          <aside id="woocommerce_widget_cart-3" className="widget woocommerce widget_shopping_cart">
+            <h3 className="widget-title">Cart</h3>
+            <div className="widget_shopping_cart_content">
+              <ul className="cart_list product_list_widget">
+                <li className="empty">No products in the cart.</li>
+              </ul>
+            </div>
+          </aside>
+          <aside id="woocommerce_product_categories-3" className="widget woocommerce widget_product_categories">
+            <h3 className="widget-title">Product Categories</h3>
+            <ul className="product-categories">
+              <li className="cat-item cat-item-112">
+                <a href="http://demo.themes4wp.com/kakina/product-category/jewelry/">Jewelry</a>
+              </li>
+              <li className="cat-item cat-item-113">
+                <a href="http://demo.themes4wp.com/kakina/product-category/shoes/">Shoes</a>
+              </li>
+              <li className="cat-item cat-item-114">
+                <a href="http://demo.themes4wp.com/kakina/product-category/sunglasses/">Sunglasses</a>
+              </li>
+              <li className="cat-item cat-item-121 cat-parent">
+                <a href="http://demo.themes4wp.com/kakina/product-category/technology/">Technology</a>
+                <ul className="children">
+                  <li className="cat-item cat-item-123">
+                    <a href="http://demo.themes4wp.com/kakina/product-category/technology/mobile/">Mobile</a>
+                  </li>
+                  <li className="cat-item cat-item-122">
+                    <a href="http://demo.themes4wp.com/kakina/product-category/technology/photo/">Photo</a>
+                  </li>
+                </ul>
+              </li>
+              <li className="cat-item cat-item-115">
+                <a href="http://demo.themes4wp.com/kakina/product-category/watches/">Watches</a>
+              </li>
+            </ul>
+          </aside>
+          <aside id="yith-woocompare-widget-3" className="widget yith-woocompare-widget">
+            <h3 className="widget-title"></h3>
+            <ul className="products-list" data-lang="">
+              <li className="list_empty">No products to compare</li>
+            </ul>
+            <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-remove-product&amp;id=all" data-product_id="all" className="clear-all" rel="nofollow">Clear all</a>
+            <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-view-table&amp;iframe=true" className="compare added button" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>
+          </aside>
+          <aside id="woocommerce_products-4" className="widget woocommerce widget_products">
+            <h3 className="widget-title">Products</h3>
+            <ul className="product_list_widget">
+              <li>
+                <a href="http://demo.themes4wp.com/kakina/product/phone-dual-uno/">
+                  <img width="180" height="180" src="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-180x180.jpg" className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-180x180.jpg 180w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-150x150.jpg 150w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-300x300.jpg 300w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-60x60.jpg 60w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px" />
+                  <span className="product-title">Phone Dual Uno</span>
+                </a>
+                <span className="woocommerce-Price-amount amount">
+                  <span className="woocommerce-Price-currencySymbol">£</span>
+                  255.00
+                </span>
+              </li>
+              <li>
+                <a href="http://demo.themes4wp.com/kakina/product/old-photomaker/">
+                  <img width="180" height="180" src="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-180x180.jpg" className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-180x180.jpg 180w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-150x150.jpg 150w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-300x300.jpg 300w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-60x60.jpg 60w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px" />
+                  <span className="product-title">Old PhotoMaker</span>
+                </a>
+                <span className="woocommerce-Price-amount amount">
+                  <span className="woocommerce-Price-currencySymbol">£</span>
+                  999.00
+                </span>
+              </li>
+              <li>
+                <a href="http://demo.themes4wp.com/kakina/product/lenss-beta-one/">
+                  <img width="180" height="180" src="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-180x180.jpg" className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-180x180.jpg 180w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-150x150.jpg 150w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-300x300.jpg 300w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-60x60.jpg 60w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px" />
+                  <span className="product-title">Lenss Beta One</span>
+                </a>
+                <span className="woocommerce-Price-amount amount">
+                  <span className="woocommerce-Price-currencySymbol">£</span>
+                  789.00
+                </span>
+              </li>
+              <li>
+                <a href="http://demo.themes4wp.com/kakina/product/photomaker/">
+                  <img width="180" height="180" src="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-180x180.jpg" className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-180x180.jpg 180w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-150x150.jpg 150w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-300x300.jpg 300w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-60x60.jpg 60w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px" />
+                  <span className="product-title">PhotoMaker</span>
+                </a>
+                <span className="woocommerce-Price-amount amount">
+                  <span className="woocommerce-Price-currencySymbol">£</span>
+                  899.00
+                </span>
+              </li>
+              <li>
+                <a href="http://demo.themes4wp.com/kakina/product/mobile-xone-2/">
+                  <img width="180" height="180" src="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-180x180.jpg" className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-180x180.jpg 180w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-150x150.jpg 150w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-300x300.jpg 300w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-60x60.jpg 60w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px" />
+                  <span className="product-title">Mobile XoNE 2</span>
+                </a>
+                <del>
+                  <span className="woocommerce-Price-amount amount">
+                    <span className="woocommerce-Price-currencySymbol">£</span>
+                    799.00
+                  </span>
+                </del>
+                <ins>
+                  <span className="woocommerce-Price-amount amount">
+                    <span className="woocommerce-Price-currencySymbol">£</span>
+                    699.00
+                  </span>
+                </ins>
+              </li>
+            </ul>
+          </aside>
+        </aside>
         <div className="col-md-9 rsrc-main">
           <div className="rsrc-post-content post-978 page type-page status-publish hentry">
             <div className="entry-content">                           

@@ -1,0 +1,28 @@
+.ant-carousel {
+  margin-top: -21px;
+  max-width: 855px;
+  .slick-slide {
+    text-align: center;
+    height: 450px;
+    line-height: 450px;
+    background: #364d79;
+    overflow: hidden;
+    h3 {
+      color: #fff;
+    }
+  }
+  @media (min-width: 992px) {
+    float: right;
+  }
+  @media (max-width: 1200px) {
+    max-width: 705px;
+    .slick-slide {
+      height: 371px;
+    }
+  }
+  @media (max-width: 991px) {
+    .slick-slide {
+      height: auto;
+    }
+  }
+}
