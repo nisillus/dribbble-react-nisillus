@@ -5,12 +5,15 @@ import * as ProductCategory from './components/product-category/index';
 const Routes = [{
   path: '/',
   exact: true,
+  showCategoriesOnStart: true,
   component: HomePage
 }, {
   path: '/product',
+  showCategoriesOnStart: false,
   component: ProductPage.ProductList
 }, {
   path: '/product-category',
+  showCategoriesOnStart: false,
   component: ProductCategory.ProductCategory
 }];
 

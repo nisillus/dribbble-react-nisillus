@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withRouter } from 'react-router-dom'
 
 import * as middlewares from '../middlewares/index';
 import * as actions from '../actions/index';
@@ -44,7 +43,7 @@ class Dribbble extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {console.log(state);
   const { CategoryReducers } = state;
   const { isFetching, isSuccessfulFetching, data, message } = CategoryReducers;
 
@@ -58,4 +57,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(Dribbble));
+export default connect(mapStateToProps)(Dribbble);

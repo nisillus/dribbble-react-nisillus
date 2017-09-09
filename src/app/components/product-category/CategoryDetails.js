@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import * as actions from '../../actions/index';
 
@@ -260,4 +260,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps)(CategoryDetails));
+export default connect(mapStateToProps)(CategoryDetails);
