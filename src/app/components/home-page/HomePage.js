@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Carousel } from 'antd';
+import Carousel from 'antd/lib/carousel';
 
 class HomePage extends Component {
   render() {
@@ -17,12 +17,12 @@ class HomePage extends Component {
           {/* <div id="slider" className="flexslider homepage-slider col-md-push-3">
             <div className="flex-viewport">
               <ul className="slides">
-                <li className="homepage-slider col-md-9"> 
+                <li className="homepage-slider col-md-9">
                   <a href="">
                     <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider1.jpg" />
-                  </a>                               
-                </li> 
-                <li className="homepage-slider col-md-9"> 
+                  </a>
+                </li>
+                <li className="homepage-slider col-md-9">
                   <a href="">
                     <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider2.jpg" />
                   </a>
@@ -150,7 +150,7 @@ class HomePage extends Component {
         </aside>
         <div className="col-md-9 rsrc-main">
           <div className="rsrc-post-content post-978 page type-page status-publish hentry">
-            <div className="entry-content">                           
+            <div className="entry-content">
               <p>
                 <a href="#" rel="attachment wp-att-979">
                   <img className=" wp-image-979" style={ { float: 'left', width: '66%' } } src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner1.jpg" alt="banner1" width="670" height="335" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner1.jpg 760w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner1-300x150.jpg 300w" sizes="(max-width: 670px) 100vw, 670px" />
@@ -188,7 +188,7 @@ class HomePage extends Component {
                       </a>
                       <a rel="nofollow" href="/kakina/homepage-with-sidebar/?add-to-cart=718" data-quantity="1" data-product_id="718" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
                       <a href="#" className="button yith-wcqv-button" data-product_id="718">Quick View</a>
-                      <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=718" className="compare button" data-product_id="718" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
+                      <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=718" className="compare button" data-product_id="718" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>
                       <div className="add-to-wishlist-custom add-to-wishlist-718">
                         <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
                           <a href="/kakina/homepage-with-sidebar/?add_to_wishlist=718" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="718" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
@@ -205,7 +205,7 @@ class HomePage extends Component {
                         <div className="clear"></div>
                         <div className="yith-wcwl-wishlistaddresponse"></div>
                       </div>
-                    </li>      
+                    </li>
                   <li className="post-707 product type-product status-publish has-post-thumbnail product_cat-jewelry  instock sale shipping-taxable purchasable product-type-simple">
                     <a href="http://demo.themes4wp.com/kakina/product/bracelet-basic/" className="woocommerce-LoopProduct-link">
                       <span className="onsale">Sale!</span>
@@ -228,7 +228,7 @@ class HomePage extends Component {
                     </a>
                     <a rel="nofollow" href="/kakina/homepage-with-sidebar/?add-to-cart=707" data-quantity="1" data-product_id="707" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
                     <a href="#" className="button yith-wcqv-button" data-product_id="707">Quick View</a>
-                    <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=707" className="compare button" data-product_id="707" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
+                    <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=707" className="compare button" data-product_id="707" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>
                     <div className="add-to-wishlist-custom add-to-wishlist-707">
                       <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
                         <a href="/kakina/homepage-with-sidebar/?add_to_wishlist=707" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="707" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
@@ -268,7 +268,7 @@ class HomePage extends Component {
                     </a>
                     <a rel="nofollow" href="/kakina/homepage-with-sidebar/?add-to-cart=774" data-quantity="1" data-product_id="774" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
                     <a href="#" className="button yith-wcqv-button" data-product_id="774">Quick View</a>
-                    <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=774" className="compare button" data-product_id="774" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
+                    <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=774" className="compare button" data-product_id="774" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>
                     <div className="add-to-wishlist-custom add-to-wishlist-774">
                       <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
                         <a href="/kakina/homepage-with-sidebar/?add_to_wishlist=774" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="774" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
@@ -308,7 +308,7 @@ class HomePage extends Component {
                     </a>
                     <a rel="nofollow" href="/kakina/homepage-with-sidebar/?add-to-cart=669" data-quantity="1" data-product_id="669" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
                     <a href="#" className="button yith-wcqv-button" data-product_id="669">Quick View</a>
-                    <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=669" className="compare button" data-product_id="669" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
+                    <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=669" className="compare button" data-product_id="669" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>
                     <div className="add-to-wishlist-custom add-to-wishlist-669">
                       <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
                         <a href="/kakina/homepage-with-sidebar/?add_to_wishlist=669" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="669" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
@@ -325,7 +325,7 @@ class HomePage extends Component {
                       <div className="clear"></div>
                       <div className="yith-wcwl-wishlistaddresponse"></div>
                     </div>
-                  </li>      
+                  </li>
                 </ul>
               </div>
               <p></p>
@@ -337,7 +337,7 @@ class HomePage extends Component {
                     <a href="http://demo.themes4wp.com/kakina/product-category/jewelry/">
                       <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/accessories-519693_1920-300x300.jpg" alt="Jewelry" width="300" height="300" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/accessories-519693_1920-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/accessories-519693_1920-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/accessories-519693_1920-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/accessories-519693_1920-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/accessories-519693_1920-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
                       <h2 className="woocommerce-loop-category__title">
-                        Jewelry 
+                        Jewelry
                         <mark className="count">(7)</mark>
                       </h2>
                     </a>
@@ -346,7 +346,7 @@ class HomePage extends Component {
                     <a href="http://demo.themes4wp.com/kakina/product-category/technology/mobile/">
                       <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-1067985_1920-300x300.jpg" alt="Mobile" width="300" height="300" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-1067985_1920-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-1067985_1920-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-1067985_1920-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-1067985_1920-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-1067985_1920-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
                       <h2 className="woocommerce-loop-category__title">
-                        Mobile 
+                        Mobile
                         <mark className="count">(3)</mark>
                       </h2>
                     </a>
@@ -355,7 +355,7 @@ class HomePage extends Component {
                     <a href="http://demo.themes4wp.com/kakina/product-category/technology/photo/">
                       <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-300x300.jpg" alt="Photo" width="300" height="300" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
                       <h2 className="woocommerce-loop-category__title">
-                        Photo 
+                        Photo
                         <mark className="count">(4)</mark>
                       </h2>
                     </a>
@@ -364,7 +364,7 @@ class HomePage extends Component {
                     <a href="http://demo.themes4wp.com/kakina/product-category/shoes/">
                       <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/shoes-1011596_1920-300x300.jpg" alt="Shoes" width="300" height="300" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/shoes-1011596_1920-300x300.jpg 300w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/shoes-1011596_1920-150x150.jpg 150w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/shoes-1011596_1920-60x60.jpg 60w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/shoes-1011596_1920-180x180.jpg 180w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/shoes-1011596_1920-600x600.jpg 600w" sizes="(max-width: 300px) 100vw, 300px" />
                       <h2 className="woocommerce-loop-category__title">
-                        Shoes 
+                        Shoes
                         <mark className="count">(11)</mark>
                       </h2>
                     </a>
@@ -372,7 +372,7 @@ class HomePage extends Component {
                 </ul>
               </div>
               <p></p>
-              <h2 style={ { textAlign: 'center' } }></h2>  
+              <h2 style={ { textAlign: 'center' } }></h2>
             </div>
           </div>
         </div>
