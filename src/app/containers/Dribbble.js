@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Route } from 'react-router-dom';
 
 import * as middlewares from '../middlewares/index';
 import * as actions from '../actions/index';
+
 import { MainHeader, MainContent } from '../components/commons/index';
 
 class Dribbble extends Component {
@@ -20,6 +22,15 @@ class Dribbble extends Component {
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    routesConfig: PropTypes.arrayOf(PropTypes.shape({
+      path: PropTypes.string.isRequired,
+      exact: PropTypes.bool,
+      showCategoriesMenu: PropTypes.bool,
+      component: PropTypes.shape({
+        header: PropTypes.func,
+        content: PropTypes.func
+      })
+    })),
     categoriesReducer: PropTypes.shape({
       isFetching: PropTypes.bool.isRequired,
       isSuccessfulFetching: PropTypes.bool.isRequired,
@@ -30,21 +41,44 @@ class Dribbble extends Component {
         tags: PropTypes.arrayOf(PropTypes.number)
       })),
       message: PropTypes.string
+    }),
+    routersReducer: PropTypes.shape({
+      hash: PropTypes.string,
+      key: PropTypes.string,
+      pathname: PropTypes.string,
+      search: PropTypes.string
     })
   };
 
   render() {
     return (
       <div className="Dribbble container rsrc-container">
-        <MainHeader categories={ this.props.categoriesReducer.categories } />
-        <MainContent pageContent={ this.props.children } />
+        {
+          this.props.routesConfig && this.props.routesConfig.map((route, index) => (
+            <Route exact={ route.exact } key={ index } path={ route.path } render={ props => (
+              <div>
+                {
+                  route.component.header
+                  ? (
+                    <route.component.header { ...props } basename={ route.path } routes={ route.childs } categories={ this.props.categoriesReducer.categories } showCategoriesMenu={ route.showCategoriesMenu } />
+                  ) : (
+                    <MainHeader { ...props } basename={ route.path } routes={ route.childs } categories={ this.props.categoriesReducer.categories } showCategoriesMenu={ route.showCategoriesMenu } />
+                  )
+                }
+                <MainContent>
+                  <route.component.content { ...props } basename={ route.path } routes={ route.childs } />
+                </MainContent>
+              </div>
+            ) } />
+          ))
+        }
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {console.log(state);
-  const { CategoryReducers } = state;
+const mapStateToProps = (state) => {
+  const { CategoryReducers, RouterReducers } = state;
   const { isFetching, isSuccessfulFetching, data, message } = CategoryReducers;
 
   return {
@@ -53,7 +87,8 @@ const mapStateToProps = (state) => {console.log(state);
       isSuccessfulFetching,
       categories: data,
       message 
-    }
+    },
+    routersReducer: RouterReducers
   };
 }
 

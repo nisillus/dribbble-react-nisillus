@@ -5,7 +5,6 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 import createHistory from 'history/createBrowserHistory';
-import { Route } from 'react-router';
 
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 
@@ -16,7 +15,6 @@ import reducers from './reducers/index'; // Or wherever you keep your reducers
 import Routes from './routes-config';
 
 import Dribbble from './containers/Dribbble';
-import { RouterWithSubRoutes } from './components/commons/index';
 import registerServiceWorker from './registerServiceWorker';
 
 import './index.scss';
@@ -32,7 +30,7 @@ const middleware = routerMiddleware(history);
 const store = createStore(
   combineReducers({
     ...reducers,
-    routerReducer
+    RouterReducers: routerReducer
   }),
   applyMiddleware(thunk, middleware)
 );
@@ -41,13 +39,7 @@ ReactDOM.render(
   (
     <Provider store={ store }>
       <ConnectedRouter history={history}>
-        <Dribbble>
-          {
-            Routes.map((route, index) => (
-              <RouterWithSubRoutes key={ index } { ...route } />
-            ))
-          }
-        </Dribbble>
+        <Dribbble routesConfig={ Routes } />
       </ConnectedRouter>
     </Provider>
   ),

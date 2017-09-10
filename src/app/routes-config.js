@@ -1,20 +1,30 @@
 import { HomePage } from './components/home-page/index';
+import { MainHeader } from './components/commons/index';
 import * as ProductPage from './components/product-page/index';
 import * as ProductCategory from './components/product-category/index';
 
 const Routes = [{
   path: '/',
   exact: true,
-  showCategoriesOnStart: true,
-  component: HomePage
+  showCategoriesMenu: true,
+  component: {
+    header: MainHeader,
+    content: HomePage
+  }
 }, {
   path: '/product',
-  showCategoriesOnStart: false,
-  component: ProductPage.ProductList
+  showCategoriesMenu: false,
+  component: {
+    header: MainHeader,
+    content: ProductPage.ProductList
+  }
 }, {
   path: '/product-category',
-  showCategoriesOnStart: false,
-  component: ProductCategory.ProductCategory
+  showCategoriesMenu: false,
+  component: {
+    header: MainHeader,
+    content: ProductCategory.ProductCategory
+  }
 }];
 
 export default Routes;

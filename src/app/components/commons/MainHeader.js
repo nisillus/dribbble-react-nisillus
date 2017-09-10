@@ -2,7 +2,29 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { debounce } from 'lodash';
+
 class MainHeader extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isShowCategoriesMenu: this.props.showCategoriesMenu
+    };
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateCategoriesMenuState);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    window.addEventListener('resize', this.updateCategoriesMenuState)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateCategoriesMenuState);
+  }
+
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.shape({
       cate_id: PropTypes.number.isRequired,
@@ -11,6 +33,22 @@ class MainHeader extends Component {
       tags: PropTypes.arrayOf(PropTypes.number)
     }))
   };
+
+  updateCategoriesMenuState = debounce(() => {
+    let windowWidth = window.innerWidth;
+
+    if (this.props.showCategoriesMenu) {
+      if (windowWidth < 992) {
+        this.setState({
+          isShowCategoriesMenu: false,
+        });
+      } else {
+        this.setState({
+          isShowCategoriesMenu: this.props.showCategoriesMenu,
+        });
+      }
+    }
+  }, 500);
 
   render() {
     return (
@@ -179,7 +217,7 @@ class MainHeader extends Component {
                   <h4 className="panel-title">Shop by category</h4>
                 </a>
               </div>
-              <div id="collapseOne" className="panel-collapse collapse col-md-3" role="tabpanel" aria-labelledby="headingOne"> 
+              <div id="collapseOne" className={ `panel-collapse collapse col-md-3 ${ this.state.isShowCategoriesMenu ? 'in' : '' }` } role="tabpanel" aria-labelledby="headingOne"> 
                 <div id="menu-homepage-side" className="widget-menu">
                   {
                     this.props.categories && this.props.categories.map((category, index) => (
