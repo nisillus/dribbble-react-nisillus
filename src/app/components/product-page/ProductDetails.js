@@ -84,10 +84,10 @@ class ProductDetails extends Component {
                 <div className="flex-viewport" style={ { overflow: 'hidden', position: 'relative' } }>
                   <figure className="woocommerce-product-gallery__wrapper" style={ { width: '200%', transitionDuration: '0s', transform: 'translate3d(0px, 0px, 0px)' } }>
                     <div data-thumb={ productDetails && productDetails.img_thumb } className="woocommerce-product-gallery__image flex-active-slide" style={ { width: '410px', marginRight: '0px', float: 'left', display: 'block', minHeight: '410px', position: 'relative', overflow: 'hidden' } }>
-                      <a href="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/bracelet-144646_1280.jpg">
-                        <img width="600" height="600" src={ productDetails && productDetails.img_url } className="attachment-shop_single size-shop_single wp-post-image" alt="" title="" data-src={ productDetails && productDetails.img_url } data-large_image={ productDetails && productDetails.img_url } data-large_image_width="1280" data-large_image_height="1097" srcSet={ productDetails && productDetails.img_set } sizes="(max-width: 600px) 100vw, 600px" draggable="false" />
+                      <a href={ `${ productDetails && productDetails.img_url }.jpg` }>
+                        <img width="600" height="600" className="attachment-shop_single size-shop_single wp-post-image" alt="" title="" data-large_image_width="1280" data-large_image_height="1097" sizes="(max-width: 600px) 100vw, 600px" draggable="false" src={ `${ productDetails && productDetails.img_url }-600x600.jpg` } data-src={ `${ productDetails && productDetails.img_url }.jpg` } data-large_image={ `${ productDetails && productDetails.img_url }.jpg` } srcSet={ `${ productDetails && productDetails.img_url }-300x300.jpg 300w, ${ productDetails && productDetails.img_url }-150x150.jpg 150w, ${ productDetails && productDetails.img_url }-60x60.jpg 60w, ${ productDetails && productDetails.img_url }-180x180.jpg 180w, ${ productDetails && productDetails.img_url }-600x600.jpg 600w` } />
                       </a>
-                      <img src={ productDetails && productDetails.img_url } className="zoomImg" style={ { position: 'absolute', top: '-214.659px', left: '-556.902px', opacity: '0', width: '1280px', height: '1097px', border: 'none', maxWidth: 'none', maxHeight: 'none' } } />
+                      <img src={ `${ productDetails && productDetails.img_url }.jpg` } className="zoomImg" style={ { position: 'absolute', top: '-214.659px', left: '-556.902px', opacity: '0', width: '1280px', height: '1097px', border: 'none', maxWidth: 'none', maxHeight: 'none' } } />
                     </div>
                   </figure>
                 </div>

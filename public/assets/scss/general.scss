@@ -1,11 +1,12 @@
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-.rsrc-container {
-  background-color: #fff;
-  padding-left: 30px;
-  padding-right: 30px;
-  min-width: 320px;
+body {
+  background-color: rgba(255,255,255,1);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-size: 14px;
 }

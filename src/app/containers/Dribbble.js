@@ -66,7 +66,7 @@ class Dribbble extends Component {
                   )
                 }
                 <MainContent>
-                  <route.component.content { ...props } basename={ route.path } routes={ route.childs } />
+                  <route.component.content { ...props } basename={ route.path } routes={ route.childs } categories={ this.props.categoriesReducer.categories } />
                 </MainContent>
               </div>
             ) } />

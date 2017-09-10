@@ -1,21 +1,10 @@
-body {
-  background-color: rgba(255,255,255,1);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  font-size: 14px;
-}
-
 @import '~antd/dist/antd.css';
 @import 'assets/scss/woocommerce-layout';
 @media only screen and (max-width: 767px) {
   @import 'assets/scss/woocommerce-smallscreen';
 };
 @import 'assets/scss/woocommerce';
+@import '~bootstrap/dist/css/bootstrap.min.css';
 @import 'assets/scss/Dribbble';
 @import 'assets/scss/carousel';
+@import 'assets/scss/general';

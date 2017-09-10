@@ -72,7 +72,7 @@ class CategoryDetails extends Component {
             <div className="term-description">
               <p>Shop online at MaxStore for the world’s finest jewellery.</p>
             </div>
-            <p className="woocommerce-result-count">Showing all 7 results</p>
+            <p className="woocommerce-result-count">{ `Showing all ${ this.props.productReducer.products ? this.props.productReducer.products.length : 0 } results` }</p>
             <form className="woocommerce-ordering" method="get">
               <select name="orderby" className="orderby" defaultValue="menu_order">
                 <option value="menu_order">Default sorting</option>
@@ -85,7 +85,7 @@ class CategoryDetails extends Component {
             </form>
             <ul className="products">
               { this.props.productReducer.products && this.props.productReducer.products.map((product, index) => (
-                <li key={ index } className={ `post-${ product.product_id } product type-product status-publish has-post-thumbnail product_cat-jewelry first instock sale shipping-taxable purchasable product-type-simple` }>
+                <li key={ index } className={ `post-${ product.product_id } product type-product status-publish has-post-thumbnail product_cat-jewelry ${ index === 0 ? 'first' : '' } instock sale shipping-taxable purchasable product-type-simple` }>
                   <Link to={ `/product/${ product.product_code }` } className="woocommerce-LoopProduct-link">
                     {
                       product.old_price && product.old_price > product.price
@@ -93,7 +93,7 @@ class CategoryDetails extends Component {
                         <span className="onsale">Sale!</span>
                       ) : null
                     }
-                    <img width="300" height="300" src={ product.img_url } className="attachment-shop_catalog size-shop_catalog wp-post-image" alt="bracelet-144646_1280" title="bracelet-144646_1280" srcSet={ product.img_set } sizes="(max-width: 300px) 100vw, 300px" />
+                    <img width="300" height="300" src={ `${ product.img_url }-300x300.jpg` } className="attachment-shop_catalog size-shop_catalog wp-post-image" alt={ product.product_code } title="male-watch-188782_1280" srcSet={ `${ product.img_url }-300x300.jpg 300w, ${ product.img_url }-150x150.jpg 150w, ${ product.img_url }-60x60.jpg 60w, ${ product.img_url }-180x180.jpg 180w, ${ product.img_url }-600x600.jpg 600w` } sizes="(max-width: 300px) 100vw, 300px" />
                     <h2 className="woocommerce-loop-product__title">{ product.name }</h2>
                     <span className="price">
                       {
