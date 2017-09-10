@@ -41,7 +41,6 @@ class ProductDetails extends Component {
         product_code: PropTypes.string.isRequired,
         name: PropTypes.string,
         img_url: PropTypes.string,
-        img_set: PropTypes.string,
         price: PropTypes.number,
         old_price: PropTypes.number,
         short_desc: PropTypes.string,

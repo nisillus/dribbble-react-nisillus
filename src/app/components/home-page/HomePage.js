@@ -26,7 +26,6 @@ class HomePage extends Component {
         product_code: PropTypes.string.isRequired,
         name: PropTypes.string,
         img_url: PropTypes.string,
-        img_set: PropTypes.string,
         price: PropTypes.number,
         old_price: PropTypes.number
       })),
@@ -87,29 +86,13 @@ class HomePage extends Component {
           <aside id="woocommerce_product_categories-3" className="widget woocommerce widget_product_categories">
             <h3 className="widget-title">Product Categories</h3>
             <ul className="product-categories">
-              <li className="cat-item cat-item-112">
-                <a href="http://demo.themes4wp.com/kakina/product-category/jewelry/">Jewelry</a>
-              </li>
-              <li className="cat-item cat-item-113">
-                <a href="http://demo.themes4wp.com/kakina/product-category/shoes/">Shoes</a>
-              </li>
-              <li className="cat-item cat-item-114">
-                <a href="http://demo.themes4wp.com/kakina/product-category/sunglasses/">Sunglasses</a>
-              </li>
-              <li className="cat-item cat-item-121 cat-parent">
-                <a href="http://demo.themes4wp.com/kakina/product-category/technology/">Technology</a>
-                <ul className="children">
-                  <li className="cat-item cat-item-123">
-                    <a href="http://demo.themes4wp.com/kakina/product-category/technology/mobile/">Mobile</a>
+              {
+                this.props.categories && this.props.categories.map((category, index) => (
+                  <li key={ index } className={ `cat-item cat-item-${ category.cate_id }` }>
+                    <Link to={ `/product-category/${ category.cate_code }` }>{ category.name }</Link>
                   </li>
-                  <li className="cat-item cat-item-122">
-                    <a href="http://demo.themes4wp.com/kakina/product-category/technology/photo/">Photo</a>
-                  </li>
-                </ul>
-              </li>
-              <li className="cat-item cat-item-115">
-                <a href="http://demo.themes4wp.com/kakina/product-category/watches/">Watches</a>
-              </li>
+                ))
+              }
             </ul>
           </aside>
           <aside id="yith-woocompare-widget-3" className="widget yith-woocompare-widget">
@@ -118,69 +101,25 @@ class HomePage extends Component {
               <li className="list_empty">No products to compare</li>
             </ul>
             <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-remove-product&amp;id=all" data-product_id="all" className="clear-all" rel="nofollow">Clear all</a>
-            <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-view-table&amp;iframe=true" className="compare added button" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>
+            <a className="compare added button" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product" onClick={ (e) => this.compareProduct(e) }>Compare</a>
           </aside>
           <aside id="woocommerce_products-4" className="widget woocommerce widget_products">
             <h3 className="widget-title">Products</h3>
             <ul className="product_list_widget">
-              <li>
-                <a href="http://demo.themes4wp.com/kakina/product/phone-dual-uno/">
-                  <img width="180" height="180" src="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-180x180.jpg" className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-180x180.jpg 180w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-150x150.jpg 150w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-300x300.jpg 300w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-60x60.jpg 60w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/iphone-410324_1280-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px" />
-                  <span className="product-title">Phone Dual Uno</span>
-                </a>
-                <span className="woocommerce-Price-amount amount">
-                  <span className="woocommerce-Price-currencySymbol">£</span>
-                  255.00
-                </span>
-              </li>
-              <li>
-                <a href="http://demo.themes4wp.com/kakina/product/old-photomaker/">
-                  <img width="180" height="180" src="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-180x180.jpg" className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-180x180.jpg 180w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-150x150.jpg 150w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-300x300.jpg 300w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-60x60.jpg 60w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-816583_1920-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px" />
-                  <span className="product-title">Old PhotoMaker</span>
-                </a>
-                <span className="woocommerce-Price-amount amount">
-                  <span className="woocommerce-Price-currencySymbol">£</span>
-                  999.00
-                </span>
-              </li>
-              <li>
-                <a href="http://demo.themes4wp.com/kakina/product/lenss-beta-one/">
-                  <img width="180" height="180" src="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-180x180.jpg" className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-180x180.jpg 180w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-150x150.jpg 150w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-300x300.jpg 300w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-60x60.jpg 60w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/camera-lens-240966_1280-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px" />
-                  <span className="product-title">Lenss Beta One</span>
-                </a>
-                <span className="woocommerce-Price-amount amount">
-                  <span className="woocommerce-Price-currencySymbol">£</span>
-                  789.00
-                </span>
-              </li>
-              <li>
-                <a href="http://demo.themes4wp.com/kakina/product/photomaker/">
-                  <img width="180" height="180" src="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-180x180.jpg" className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-180x180.jpg 180w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-150x150.jpg 150w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-300x300.jpg 300w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-60x60.jpg 60w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/lens-272264_1920-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px" />
-                  <span className="product-title">PhotoMaker</span>
-                </a>
-                <span className="woocommerce-Price-amount amount">
-                  <span className="woocommerce-Price-currencySymbol">£</span>
-                  899.00
-                </span>
-              </li>
-              <li>
-                <a href="http://demo.themes4wp.com/kakina/product/mobile-xone-2/">
-                  <img width="180" height="180" src="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-180x180.jpg" className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet="//demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-180x180.jpg 180w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-150x150.jpg 150w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-300x300.jpg 300w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-60x60.jpg 60w, //demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/12/apple-932128_1920-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px" />
-                  <span className="product-title">Mobile XoNE 2</span>
-                </a>
-                <del>
-                  <span className="woocommerce-Price-amount amount">
-                    <span className="woocommerce-Price-currencySymbol">£</span>
-                    799.00
-                  </span>
-                </del>
-                <ins>
-                  <span className="woocommerce-Price-amount amount">
-                    <span className="woocommerce-Price-currencySymbol">£</span>
-                    699.00
-                  </span>
-                </ins>
-              </li>
+              {
+                this.props.productReducer && this.props.productReducer.products && this.props.productReducer.products.map((product, index) => (
+                  <li key={ index }>
+                    <Link to={ `/product/${ product.product_code }`}>
+                      <img width="180" height="180" src={ `${ product.img_url }-180x180.jpg` } className="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcSet={ `${ product.img_url }-180x180.jpg 180w, ${ product.img_url }-150x150.jpg 150w, ${ product.img_url }-300x300.jpg 300w, ${ product.img_url }-60x60.jpg 60w, ${ product.img_url }-600x600.jpg 600w` } sizes="(max-width: 180px) 100vw, 180px" />
+                      <span className="product-title">{ product.name }</span>
+                    </Link>
+                    <span className="woocommerce-Price-amount amount">
+                      <span className="woocommerce-Price-currencySymbol">£</span>
+                      { product.price }
+                    </span>
+                  </li>
+                ))
+              }
             </ul>
           </aside>
         </aside>
