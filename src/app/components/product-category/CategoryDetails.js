@@ -84,58 +84,60 @@ class CategoryDetails extends Component {
               </select>
             </form>
             <ul className="products">
-              { this.props.productReducer.products && this.props.productReducer.products.map((product, index) => (
-                <li key={ index } className={ `post-${ product.product_id } product type-product status-publish has-post-thumbnail product_cat-jewelry ${ index === 0 ? 'first' : '' } instock sale shipping-taxable purchasable product-type-simple` }>
-                  <Link to={ `/product/${ product.product_code }` } className="woocommerce-LoopProduct-link">
-                    {
-                      product.old_price && product.old_price > product.price
-                      ? (
-                        <span className="onsale">Sale!</span>
-                      ) : null
-                    }
-                    <img width="300" height="300" src={ `${ product.img_url }-300x300.jpg` } className="attachment-shop_catalog size-shop_catalog wp-post-image" alt={ product.product_code } title="male-watch-188782_1280" srcSet={ `${ product.img_url }-300x300.jpg 300w, ${ product.img_url }-150x150.jpg 150w, ${ product.img_url }-60x60.jpg 60w, ${ product.img_url }-180x180.jpg 180w, ${ product.img_url }-600x600.jpg 600w` } sizes="(max-width: 300px) 100vw, 300px" />
-                    <h2 className="woocommerce-loop-product__title">{ product.name }</h2>
-                    <span className="price">
+              {
+                this.props.productReducer && this.props.productReducer.products && this.props.productReducer.products.map((product, index) => (
+                  <li key={ index } className={ `post-${ product.product_id } product type-product status-publish has-post-thumbnail product_cat-jewelry ${ index === 0 ? 'first' : '' } instock sale shipping-taxable purchasable product-type-simple` }>
+                    <Link to={ `/product/${ product.product_code }` } className="woocommerce-LoopProduct-link">
                       {
-                        product.old_price
+                        product.old_price && product.old_price > product.price
                         ? (
-                            <del>
-                              <span className="woocommerce-Price-amount amount">
-                                <span className="woocommerce-Price-currencySymbol">£</span>
-                                { product.old_price }
-                              </span>
-                            </del>
-                          ) : null
-                        }
-                      <ins>
-                        <span className="woocommerce-Price-amount amount">
-                          <span className="woocommerce-Price-currencySymbol">£</span>
-                          { product.price }
-                        </span>
-                      </ins>
-                    </span>
-                  </Link>
-                  <a rel="nofollow" data-quantity="1" data-product_id={ product.product_id } data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart" onClick={ (e) => this.addProductToCart(e, product.product_id) }>Add to cart</a>
-                  <a className="button yith-wcqv-button" data-product_id={ product.product_id } onClick={ (e) => this.quickViewProduct(e, product.product_id) }>Quick View</a>
-                  <a className="compare button" data-product_id={ product.product_id } rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product" onClick={ (e) => this.compareProduct(e, product.product_id) }>Compare</a>  
-                  <div className={ `add-to-wishlist-custom add-to-wishlist-${ product.product_id }` }>
-                    <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                      <a data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id={ product.product_id } data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist" onClick={ (e) => this.addProductToWishList(e, product.product_id) }> </a>
-                      <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
+                          <span className="onsale">Sale!</span>
+                        ) : null
+                      }
+                      <img width="300" height="300" src={ `${ product.img_url }-300x300.jpg` } className="attachment-shop_catalog size-shop_catalog wp-post-image" alt={ product.product_code } title="male-watch-188782_1280" srcSet={ `${ product.img_url }-300x300.jpg 300w, ${ product.img_url }-150x150.jpg 150w, ${ product.img_url }-60x60.jpg 60w, ${ product.img_url }-180x180.jpg 180w, ${ product.img_url }-600x600.jpg 600w` } sizes="(max-width: 300px) 100vw, 300px" />
+                      <h2 className="woocommerce-loop-product__title">{ product.name }</h2>
+                      <span className="price">
+                        {
+                          product.old_price
+                          ? (
+                              <del>
+                                <span className="woocommerce-Price-amount amount">
+                                  <span className="woocommerce-Price-currencySymbol">£</span>
+                                  { product.old_price }
+                                </span>
+                              </del>
+                            ) : null
+                          }
+                        <ins>
+                          <span className="woocommerce-Price-amount amount">
+                            <span className="woocommerce-Price-currencySymbol">£</span>
+                            { product.price }
+                          </span>
+                        </ins>
+                      </span>
+                    </Link>
+                    <a rel="nofollow" data-quantity="1" data-product_id={ product.product_id } data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart" onClick={ (e) => this.addProductToCart(e, product.product_id) }>Add to cart</a>
+                    <a className="button yith-wcqv-button" data-product_id={ product.product_id } onClick={ (e) => this.quickViewProduct(e, product.product_id) }>Quick View</a>
+                    <a className="compare button" data-product_id={ product.product_id } rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product" onClick={ (e) => this.compareProduct(e, product.product_id) }>Compare</a>  
+                    <div className={ `add-to-wishlist-custom add-to-wishlist-${ product.product_id }` }>
+                      <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
+                        <a data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id={ product.product_id } data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist" onClick={ (e) => this.addProductToWishList(e, product.product_id) }> </a>
+                        <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
+                      </div>
+                      <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
+                        <span className="feedback">Added!</span>
+                        <Link to="/wishlist">View Wishlist</Link>
+                      </div>
+                      <div className="yith-wcwl-wishlistexistsbrowse hide" style={ { display: 'none' } }>
+                        <span className="feedback">The product is already in the wishlist!</span>
+                        <Link to="/wishlist">Browse Wishlist</Link>
+                      </div>
+                      <div className="clear"></div>
+                      <div className="yith-wcwl-wishlistaddresponse"></div>
                     </div>
-                    <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
-                      <span className="feedback">Added!</span>
-                      <Link to="/wishlist">View Wishlist</Link>
-                    </div>
-                    <div className="yith-wcwl-wishlistexistsbrowse hide" style={ { display: 'none' } }>
-                      <span className="feedback">The product is already in the wishlist!</span>
-                      <Link to="/wishlist">Browse Wishlist</Link>
-                    </div>
-                    <div className="clear"></div>
-                    <div className="yith-wcwl-wishlistaddresponse"></div>
-                  </div>
-                </li>
-              )) }
+                  </li>
+                )) 
+              }
             </ul>
           </div>
         </div>

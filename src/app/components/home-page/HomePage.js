@@ -68,36 +68,12 @@ class HomePage extends Component {
         <div className="top-area row">
           <Carousel autoplay>
             <a href="">
-              <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider1.jpg" />
+              <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider1.jpg" alt="flexslider-slider1" />
             </a>
             <a href="">
-              <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider2.jpg" />
+              <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider2.jpg" alt="flexslider-slider1" />
             </a>
           </Carousel>
-          {/* <div id="slider" className="flexslider homepage-slider col-md-push-3">
-            <div className="flex-viewport">
-              <ul className="slides">
-                <li className="homepage-slider col-md-9">
-                  <a href="">
-                    <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider1.jpg" />
-                  </a>
-                </li>
-                <li className="homepage-slider col-md-9">
-                  <a href="">
-                    <img src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/slider2.jpg" />
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <ul className="flex-direction-nav">
-              <li className="flex-nav-prev">
-                <a className="flex-prev" href="#" tabIndex="-1">Previous</a>
-              </li>
-              <li className="flex-nav-next">
-                <a className="flex-next flex-disabled" href="#" tabIndex="-1">Next</a>
-              </li>
-            </ul>
-          </div> */}
         </div>
         <aside id="sidebar-secondary" className="col-md-3 rsrc-left">
           <aside id="woocommerce_widget_cart-3" className="widget woocommerce widget_shopping_cart">
@@ -137,7 +113,7 @@ class HomePage extends Component {
             </ul>
           </aside>
           <aside id="yith-woocompare-widget-3" className="widget yith-woocompare-widget">
-            <h3 className="widget-title"></h3>
+            <h3 className="widget-title"> </h3>
             <ul className="products-list" data-lang="">
               <li className="list_empty">No products to compare</li>
             </ul>
@@ -212,15 +188,15 @@ class HomePage extends Component {
           <div className="rsrc-post-content post-978 page type-page status-publish hentry">
             <div className="entry-content">
               <p>
-                <a href="#" rel="attachment wp-att-979">
+                <Link to="/#" rel="attachment wp-att-979">
                   <img className=" wp-image-979" style={ { float: 'left', width: '66%' } } src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner1.jpg" alt="banner1" width="670" height="335" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner1.jpg 760w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner1-300x150.jpg 300w" sizes="(max-width: 670px) 100vw, 670px" />
-                </a>
-                <a href="#" rel="attachment wp-att-984">
+                </Link>
+                <Link to="/#" rel="attachment wp-att-984">
                   <img className=" wp-image-984" style={ { width: '33%' } } src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner2.jpg" alt="banner2" width="340" height="170" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner2.jpg 380w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner2-300x150.jpg 300w" sizes="(max-width: 340px) 100vw, 340px" />
-                </a>
-                <a href="#" rel="attachment wp-att-985">
+                </Link>
+                <Link to="/#" rel="attachment wp-att-985">
                   <img className=" wp-image-985" style={ { width: '33%' } } src="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner3.jpg" alt="banner3" width="340" height="170" srcSet="http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner3.jpg 380w, http://demo.themes4wp.com/kakina/wp-content/uploads/sites/15/2015/09/banner3-300x150.jpg 300w" sizes="(max-width: 340px) 100vw, 340px" />
-                </a>
+                </Link>
               </p>
               <h2 style={ { textAlign: 'center' } }>Sale Offer</h2>
               <hr />
@@ -255,7 +231,7 @@ class HomePage extends Component {
                           <a className="compare button" data-product_id={ product.product_id } rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product" onClick={ (e) => this.compareProduct(e, product.product_id) }>Compare</a>
                           <div className={ `add-to-wishlist-custom add-to-wishlist-${ product.product_id }` }>
                             <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                              <a data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="718" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist" onClick={ (e) => this.addProductToWishList(e, product.product_id) }></a>
+                              <a data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="718" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist" onClick={ (e) => this.addProductToWishList(e, product.product_id) }> </a>
                               <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
                             </div>
                             <div className="yith-wcwl-wishlistaddedbrowse hide" style={{ display: 'none' }}>
@@ -299,7 +275,7 @@ class HomePage extends Component {
                 </ul>
               </div>
               <p></p>
-              <h2 style={ { textAlign: 'center' } }></h2>
+              <h2 style={ { textAlign: 'center' } }> </h2>
             </div>
           </div>
         </div>

@@ -36,7 +36,7 @@ const fetchCategoryData = (params) => {
     return async() => {
       try {
         let categoryData = await middlewares.firebaseMiddleWares.fetchCategories();
-        dispatch(receiveCategoryData(categoryData.val()));
+        dispatch(receiveCategoryData(Object.values(categoryData.val())));
       } catch(err) {
         dispatch(fetchCategoryError(err.message || 'Fetching categories data failed!'));
       }

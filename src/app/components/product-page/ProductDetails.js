@@ -53,6 +53,7 @@ class ProductDetails extends Component {
 
   render() {
     const { productDetails } = this.props.productDetailsReducer;
+
     return (
       <div className="Product-details">
         <div className="col-md-9 rsrc-main">
@@ -80,14 +81,16 @@ class ProductDetails extends Component {
                 ) : null
               }
               <div className="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4" style={ { opacity: '1', transition: 'opacity 0.25s ease-in-out' } }>
-                <Link to="/#" className="woocommerce-product-gallery__trigger">🔍</Link>
+                <Link to="/#" className="woocommerce-product-gallery__trigger">
+                  <span role="img" aria-label="Search products">🔍</span>
+                </Link>
                 <div className="flex-viewport" style={ { overflow: 'hidden', position: 'relative' } }>
                   <figure className="woocommerce-product-gallery__wrapper" style={ { width: '200%', transitionDuration: '0s', transform: 'translate3d(0px, 0px, 0px)' } }>
-                    <div data-thumb={ productDetails && productDetails.img_thumb } className="woocommerce-product-gallery__image flex-active-slide" style={ { width: '410px', marginRight: '0px', float: 'left', display: 'block', minHeight: '410px', position: 'relative', overflow: 'hidden' } }>
+                    <div data-thumb={ `${ productDetails && productDetails.img_url }-180x180.jpg` } className="woocommerce-product-gallery__image flex-active-slide" style={ { width: '410px', marginRight: '0px', float: 'left', display: 'block', minHeight: '410px', position: 'relative', overflow: 'hidden' } }>
                       <a href={ `${ productDetails && productDetails.img_url }.jpg` }>
                         <img width="600" height="600" className="attachment-shop_single size-shop_single wp-post-image" alt="" title="" data-large_image_width="1280" data-large_image_height="1097" sizes="(max-width: 600px) 100vw, 600px" draggable="false" src={ `${ productDetails && productDetails.img_url }-600x600.jpg` } data-src={ `${ productDetails && productDetails.img_url }.jpg` } data-large_image={ `${ productDetails && productDetails.img_url }.jpg` } srcSet={ `${ productDetails && productDetails.img_url }-300x300.jpg 300w, ${ productDetails && productDetails.img_url }-150x150.jpg 150w, ${ productDetails && productDetails.img_url }-60x60.jpg 60w, ${ productDetails && productDetails.img_url }-180x180.jpg 180w, ${ productDetails && productDetails.img_url }-600x600.jpg 600w` } />
                       </a>
-                      <img src={ `${ productDetails && productDetails.img_url }.jpg` } className="zoomImg" style={ { position: 'absolute', top: '-214.659px', left: '-556.902px', opacity: '0', width: '1280px', height: '1097px', border: 'none', maxWidth: 'none', maxHeight: 'none' } } />
+                      <img src={ `${ productDetails && productDetails.img_url }.jpg` } alt={ productDetails && productDetails.product_code } className="zoomImg" style={ { position: 'absolute', top: '-214.659px', left: '-556.902px', opacity: '0', width: '1280px', height: '1097px', border: 'none', maxWidth: 'none', maxHeight: 'none' } } />
                     </div>
                   </figure>
                 </div>
@@ -190,11 +193,11 @@ class ProductDetails extends Component {
                               <label htmlFor="rating">Your rating</label>
                               <p className="stars">
                                 <span>
-                                  <a className="star-1" href="#">1</a>
-                                  <a className="star-2" href="#">2</a>
-                                  <a className="star-3" href="#">3</a>
-                                  <a className="star-4" href="#">4</a>
-                                  <a className="star-5" href="#">5</a>
+                                  <Link className="star-1" to="/#">1</Link>
+                                  <Link className="star-2" to="/#">2</Link>
+                                  <Link className="star-3" to="/#">3</Link>
+                                  <Link className="star-4" to="/#">4</Link>
+                                  <Link className="star-5" to="/#">5</Link>
                                 </span>
                               </p>
                               <select name="rating" id="rating" aria-required="true" required="" style={ { display: 'none' } }>
@@ -263,7 +266,7 @@ class ProductDetails extends Component {
                     <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=700" className="compare button" data-product_id="700" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
                     <div className="add-to-wishlist-custom add-to-wishlist-700">
                       <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                        <a href="/kakina/product/bracelet-basic/?add_to_wishlist=700" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="700" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
+                        <a href="/kakina/product/bracelet-basic/?add_to_wishlist=700" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="700" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"> </a>
                         <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
                       </div>
                       <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
@@ -290,11 +293,11 @@ class ProductDetails extends Component {
                       </span>
                     </a>
                     <a rel="nofollow" href="/kakina/product/bracelet-basic/?add-to-cart=720" data-quantity="1" data-product_id="720" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                    <a href="#" className="button yith-wcqv-button" data-product_id="720">Quick View</a>
+                    <Link to="/#" className="button yith-wcqv-button" data-product_id="720">Quick View</Link>
                     <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=720" className="compare button" data-product_id="720" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>
                     <div className="add-to-wishlist-custom add-to-wishlist-720">
                       <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                        <a href="/kakina/product/bracelet-basic/?add_to_wishlist=720" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="720" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
+                        <a href="/kakina/product/bracelet-basic/?add_to_wishlist=720" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="720" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"> </a>
                         <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
                       </div>
                       <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
@@ -321,11 +324,11 @@ class ProductDetails extends Component {
                       </span>
                     </a>
                     <a rel="nofollow" href="/kakina/product/bracelet-basic/?add-to-cart=723" data-quantity="1" data-product_id="723" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                    <a href="#" className="button yith-wcqv-button" data-product_id="723">Quick View</a>
+                    <Link to="/#" className="button yith-wcqv-button" data-product_id="723">Quick View</Link>
                     <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=723" className="compare button" data-product_id="723" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
                     <div className="add-to-wishlist-custom add-to-wishlist-723">
                       <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                        <a href="/kakina/product/bracelet-basic/?add_to_wishlist=723" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="723" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
+                        <a href="/kakina/product/bracelet-basic/?add_to_wishlist=723" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="723" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"> </a>
                         <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
                       </div>
                       <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
@@ -352,11 +355,11 @@ class ProductDetails extends Component {
                       </span>
                     </a>
                     <a rel="nofollow" href="/kakina/product/bracelet-basic/?add-to-cart=706" data-quantity="1" data-product_id="706" data-product_sku="" className="button product_type_simple add_to_cart_button ajax_add_to_cart">Add to cart</a>
-                    <a href="#" className="button yith-wcqv-button" data-product_id="706">Quick View</a>
+                    <Link to="/#" className="button yith-wcqv-button" data-product_id="706">Quick View</Link>
                     <a href="http://demo.themes4wp.com/kakina?action=yith-woocompare-add-product&amp;id=706" className="compare button" data-product_id="706" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare Product">Compare</a>  
                     <div className="add-to-wishlist-custom add-to-wishlist-706">
                       <div className="yith-wcwl-add-button show" style={ { display: 'block' } }>
-                        <a href="/kakina/product/bracelet-basic/?add_to_wishlist=706" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="706" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"></a>
+                        <a href="/kakina/product/bracelet-basic/?add_to_wishlist=706" data-toggle="tooltip" data-placement="top" rel="nofollow" data-product-id="706" data-product-type="simple" title="" className="add_to_wishlist" data-original-title="Add to Wishlist"> </a>
                         <img src="http://demo.themes4wp.com/kakina/wp-content/themes/kakina/img/loading.gif" className="ajax-loading" alt="loading" width="16" height="16" />
                       </div>
                       <div className="yith-wcwl-wishlistaddedbrowse hide" style={ { display: 'none' } }>
@@ -376,7 +379,7 @@ class ProductDetails extends Component {
             </div>
           </div>
         </div>
-        <aside id="sidebar" className="col-md-3 rsrc-right" role="complementary">
+        <aside id="sidebar" className="col-md-3 rsrc-right">
           <aside id="woocommerce_widget_cart-2" className="widget woocommerce widget_shopping_cart">
             <h3 className="widget-title">Cart</h3>
             <div className="widget_shopping_cart_content">

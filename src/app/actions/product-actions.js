@@ -35,7 +35,7 @@ const fetchProductData = (params) => {
     return async() => {
       try {
         let productData = await middlewares.firebaseMiddleWares.fetchProductsByCate(params.cate_code);
-        dispatch(receiveProductData(productData.val()));
+        dispatch(receiveProductData(Object.values(productData.val())));
       } catch(err) {
         dispatch(fetchProductError(err.message || 'Fetching products data failed!'));
       }
